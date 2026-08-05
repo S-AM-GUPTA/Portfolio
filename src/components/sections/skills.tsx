@@ -3,25 +3,21 @@
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useState } from "react";
-import { 
-  Code2, FileCode2, Paintbrush, Palette, Database, Server, 
-  Zap, TerminalSquare, Brackets, Cloud, GitBranch, Layout, Wrench
-} from "lucide-react";
 
 const skillsList = [
-  { name: "React.js", icon: <Code2 className="w-10 h-10 text-[var(--color-deep-teal)]" />, color: "bg-[var(--color-ink-navy)] text-white" },
-  { name: "Next.js", icon: <Layout className="w-10 h-10 text-[var(--color-charcoal-navy)]" />, color: "bg-[var(--color-charcoal-navy)] text-white" },
-  { name: "TypeScript", icon: <Brackets className="w-10 h-10 text-[var(--color-deep-teal)]" />, color: "bg-[var(--color-deep-teal)] text-white" },
-  { name: "JavaScript", icon: <FileCode2 className="w-10 h-10 text-yellow-500" />, color: "bg-[var(--color-charcoal-navy)] text-white" },
-  { name: "Node.js", icon: <Server className="w-10 h-10 text-[var(--color-deep-teal)]" />, color: "bg-[var(--color-ink-navy)] text-white" },
-  { name: "Express.js", icon: <Zap className="w-10 h-10 text-yellow-600" />, color: "bg-[var(--color-charcoal-navy)] text-white" },
-  { name: "MongoDB", icon: <Database className="w-10 h-10 text-green-600" />, color: "bg-[var(--color-deep-teal)] text-white" },
-  { name: "PostgreSQL", icon: <Database className="w-10 h-10 text-[var(--color-ink-navy)]" />, color: "bg-[var(--color-charcoal-navy)] text-white" },
-  { name: "Tailwind CSS", icon: <Palette className="w-10 h-10 text-[var(--color-deep-teal)]" />, color: "bg-[var(--color-ink-navy)] text-white" },
-  { name: "Framer Motion", icon: <Wrench className="w-10 h-10 text-purple-600" />, color: "bg-[var(--color-deep-teal)] text-white" },
-  { name: "Python", icon: <TerminalSquare className="w-10 h-10 text-[var(--color-charcoal-navy)]" />, color: "bg-[var(--color-charcoal-navy)] text-white" },
-  { name: "Git", icon: <GitBranch className="w-10 h-10 text-orange-600" />, color: "bg-[var(--color-ink-navy)] text-white" },
-  { name: "Vercel", icon: <Cloud className="w-10 h-10 text-[var(--color-charcoal-navy)]" />, color: "bg-[var(--color-charcoal-navy)] text-white" },
+  { name: "React.js", image: "/skills/react.png", color: "bg-[var(--color-card-mint)]" },
+  { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white border border-[var(--color-mint-mist)]" },
+  { name: "TypeScript", image: "/skills/typescript.png", color: "bg-[var(--color-sea-foam)]" },
+  { name: "JavaScript", image: "/skills/javascript.png", color: "bg-[var(--color-blush-sand)]" },
+  { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs/339933", color: "bg-[var(--color-card-mint)]" },
+  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000", color: "bg-white border border-[var(--color-mint-mist)]" },
+  { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb/47A248", color: "bg-[var(--color-sea-foam)]" },
+  { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql/4169E1", color: "bg-[var(--color-card-mint)]" },
+  { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "bg-[var(--color-blush-sand)]" },
+  { name: "Framer Motion", image: "https://cdn.simpleicons.org/framer/0055FF", color: "bg-[var(--color-sea-foam)]" },
+  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB", color: "bg-white border border-[var(--color-mint-mist)]" },
+  { name: "Git", image: "/skills/git.png", color: "bg-[var(--color-card-mint)]" },
+  { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000", color: "bg-[var(--color-blush-sand)]" },
 ];
 
 function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: number }) {
@@ -54,7 +50,7 @@ function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: numbe
       style={{ zIndex: isHovered ? 50 : 10 }} // Ensure hovered chip preview appears above others
     >
       <div className={`px-6 py-3 md:px-8 md:py-4 rounded-[48px] ${skill.color} shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center`}>
-        <span className="text-[16px] md:text-[18px] font-[500]">
+        <span className="text-[16px] md:text-[18px] font-[500] text-[var(--color-charcoal-navy)]">
           {skill.name}
         </span>
       </div>
@@ -82,7 +78,7 @@ function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: numbe
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
-                {skill.icon}
+                <img src={skill.image} alt={skill.name} className="w-12 h-12 object-contain" />
               </motion.div>
             </div>
           </motion.div>
