@@ -68,7 +68,7 @@ export function Contact() {
                 <input 
                   type="text" 
                   className="w-full bg-[var(--color-paper-white)] border border-transparent rounded-[8px] px-4 py-3 text-[14px] text-[var(--color-charcoal-navy)] placeholder:text-[var(--color-charcoal-navy)] placeholder:opacity-50 focus:outline-none focus:border-[var(--color-deep-teal)] transition-all"
-                  placeholder="John Doe"
+                  placeholder="Saksham Gupta"
                 />
               </div>
               <div className="space-y-2">
@@ -76,7 +76,7 @@ export function Contact() {
                 <input 
                   type="email" 
                   className="w-full bg-[var(--color-paper-white)] border border-transparent rounded-[8px] px-4 py-3 text-[14px] text-[var(--color-charcoal-navy)] placeholder:text-[var(--color-charcoal-navy)] placeholder:opacity-50 focus:outline-none focus:border-[var(--color-deep-teal)] transition-all"
-                  placeholder="john@example.com"
+                  placeholder="hello@example.com"
                 />
               </div>
             </div>

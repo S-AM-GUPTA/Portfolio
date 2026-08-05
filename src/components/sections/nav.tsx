@@ -64,7 +64,7 @@ export function Navigation() {
           href="#contact"
           className="hidden md:inline-flex px-6 py-2.5 rounded-[48px] text-[14px] font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors relative z-50"
         >
-          Let's Talk
+          Hire Me
         </a>
 
         {/* Mobile Toggle */}
@@ -98,7 +98,7 @@ export function Navigation() {
             onClick={() => setIsOpen(false)}
             className="inline-block text-center w-full px-5 py-3 mt-4 rounded-[48px] text-base font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors"
           >
-            Let's Talk
+            Hire Me
           </a>
         </motion.div>
       )}
