@@ -1,98 +1,77 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Html } from "@react-three/drei";
+import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
-import * as THREE from "three";
+import { Layout, Server, Database, Wrench } from "lucide-react";
 
-const ALL_SKILLS = [
-  "JavaScript", "TypeScript", "Python", "C", "React.js", "HTML5", "CSS3",
-  "Tailwind CSS", "Redux", "Node.js", "Express.js", "REST APIs", "JWT", "Socket.io",
-  "MongoDB", "MySQL", "Firebase", "Git", "GitHub", "Docker", "Postman", "VS Code",
-  "Render", "Vercel", "Data Structures", "Algorithms", "OOP", "DBMS", "Networks", "Auth"
+const skillCategories = [
+  {
+    title: "Frontend",
+    icon: <Layout className="w-5 h-5" />,
+    skills: ["React.js", "HTML5", "CSS3", "Tailwind CSS", "Redux", "Framer Motion"],
+    bgColor: "bg-[var(--color-card-mint)]"
+  },
+  {
+    title: "Backend",
+    icon: <Server className="w-5 h-5" />,
+    skills: ["Node.js", "Express.js", "REST APIs", "JWT", "Socket.io"],
+    bgColor: "bg-[var(--color-blush-sand)]"
+  },
+  {
+    title: "Databases",
+    icon: <Database className="w-5 h-5" />,
+    skills: ["MongoDB", "MySQL", "Firebase", "PostgreSQL"],
+    bgColor: "bg-[var(--color-card-mint)]"
+  },
+  {
+    title: "Languages & Tools",
+    icon: <Wrench className="w-5 h-5" />,
+    skills: ["JavaScript", "TypeScript", "Python", "C", "Git", "Docker", "Postman", "Vercel"],
+    bgColor: "bg-[var(--color-sea-foam)]"
+  }
 ];
-
-function SkillCloud() {
-  const groupRef = useRef<THREE.Group>(null);
-  
-  // Distribute points evenly on a sphere using the Fibonacci sphere algorithm
-  const points = useMemo(() => {
-    const pts = [];
-    const numPoints = ALL_SKILLS.length;
-    const phi = Math.PI * (3 - Math.sqrt(5)); // golden angle
-    
-    for (let i = 0; i < numPoints; i++) {
-      const y = 1 - (i / (numPoints - 1)) * 2; // y goes from 1 to -1
-      const radius = Math.sqrt(1 - y * y); // radius at y
-      const theta = phi * i; // golden angle increment
-      
-      const x = Math.cos(theta) * radius;
-      const z = Math.sin(theta) * radius;
-      
-      pts.push(new THREE.Vector3(x * 6, y * 6, z * 6)); // Scale the sphere radius to 6
-    }
-    return pts;
-  }, []);
-
-  return (
-    <group ref={groupRef}>
-      {ALL_SKILLS.map((skill, i) => (
-        <SkillNode key={skill} skill={skill} position={points[i]} />
-      ))}
-    </group>
-  );
-}
-
-function SkillNode({ skill, position }: { skill: string, position: THREE.Vector3 }) {
-  const [hovered, setHovered] = useState(false);
-  
-  return (
-    <Html 
-      position={position} 
-      center 
-      distanceFactor={15} // Makes the HTML elements scale with 3D depth
-      zIndexRange={[100, 0]}
-    >
-      <div 
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        className={`px-4 py-2 rounded-full backdrop-blur-md border font-bold whitespace-nowrap shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 cursor-grab active:cursor-grabbing
-          ${hovered 
-            ? 'bg-white text-black border-white scale-125 shadow-[0_0_30px_rgba(255,255,255,0.5)] z-50' 
-            : 'bg-black/40 text-white/80 border-white/20 hover:text-white'}
-        `}
-      >
-        {skill}
-      </div>
-    </Html>
-  );
-}
 
 export function Skills() {
   return (
-    <section id="skills" className="py-8 relative z-10 flex flex-col items-center justify-center overflow-hidden">
+    <section id="skills" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
       
-      {/* Title placed statically over the 3D canvas */}
-      <div className="container mx-auto px-6 md:px-12 relative z-20 pointer-events-none mb-0">
+      <div className="container mx-auto px-6 md:px-12 relative z-20">
         <SectionHeading 
           title="Technical Arsenal" 
-          subtitle="An interactive 3D constellation of my technological proficiency. Grab and spin to explore."
+          subtitle="A comprehensive overview of the tools, languages, and frameworks I use to build robust digital products."
+          centered
         />
-      </div>
 
-      {/* The 3D Interactive Canvas */}
-      <div className="relative w-full h-[400px] lg:h-[500px] z-10 pointer-events-none md:pointer-events-auto md:cursor-grab md:active:cursor-grabbing -mt-4">
-        <Canvas camera={{ position: [0, 0, 16], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <SkillCloud />
-          <OrbitControls 
-            enablePan={false} 
-            enableZoom={false} 
-            autoRotate 
-            autoRotateSpeed={2.0} // Smooth automatic rotation
-          />
-        </Canvas>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1000px] mx-auto">
+          {skillCategories.map((category, idx) => (
+            <motion.div
+              key={category.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className={`rounded-[12px] p-8 ${category.bgColor} flex flex-col items-start`}
+            >
+              <div className="flex items-center gap-3 mb-6 text-[var(--color-deep-teal)]">
+                {category.icon}
+                <h3 className="text-[13px] font-[500] font-mono uppercase tracking-widest">
+                  {category.title}
+                </h3>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span 
+                    key={skill} 
+                    className="px-4 py-2 bg-[var(--color-paper-white)] rounded-[48px] text-[15px] font-[500] text-[var(--color-charcoal-navy)] whitespace-nowrap"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

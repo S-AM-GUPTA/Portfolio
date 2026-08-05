@@ -15,48 +15,48 @@ const LinkedinIcon = () => (
 
 export function Contact() {
   return (
-    <section id="contact" className="py-12 md:py-24 relative z-10">
+    <section id="contact" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
           title="Let's Build Something" 
           subtitle="Open for opportunities, collaborations, and conversations about the future of tech."
-          className="text-center items-center mb-16"
+          centered
         />
 
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 bg-secondary-100/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12 bg-[var(--color-blush-sand)] rounded-[12px] p-8 md:p-12">
           
           <div className="lg:col-span-2 space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">Get in touch</h3>
-              <p className="text-muted leading-relaxed">
+              <h3 className="text-[28px] font-[500] font-serif text-[var(--color-charcoal-navy)] mb-2">Get in touch</h3>
+              <p className="text-[16px] text-[var(--color-charcoal-navy)] opacity-80 leading-[1.6]">
                 Whether you have a question, a project idea, or just want to say hi, my inbox is always open.
               </p>
             </div>
 
             <div className="space-y-4">
-              <a href="mailto:hello@example.com" className="flex items-center gap-4 text-muted hover:text-accent-blue transition-colors group">
-                <div className="w-12 h-12 rounded-full bg-secondary-200 border border-white/5 flex items-center justify-center group-hover:border-accent-blue/50 transition-colors">
-                  <Mail className="w-5 h-5" />
+              <a href="mailto:hello@example.com" className="flex items-center gap-4 text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors group">
+                <div className="w-12 h-12 rounded-[12px] bg-[var(--color-paper-white)] flex items-center justify-center group-hover:bg-[var(--color-sea-foam)] transition-colors">
+                  <Mail className="w-5 h-5 text-[var(--color-deep-teal)]" />
                 </div>
-                <span className="font-medium">hello@example.com</span>
+                <span className="font-[500]">hello@example.com</span>
               </a>
-              <a href="https://www.linkedin.com/in/s-aksham-gupta/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-muted hover:text-accent-purple transition-colors group">
-                <div className="w-12 h-12 rounded-full bg-secondary-200 border border-white/5 flex items-center justify-center group-hover:border-accent-purple/50 transition-colors">
+              <a href="https://www.linkedin.com/in/s-aksham-gupta/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors group">
+                <div className="w-12 h-12 rounded-[12px] bg-[var(--color-paper-white)] flex items-center justify-center group-hover:bg-[var(--color-sea-foam)] transition-colors">
                   <LinkedinIcon />
                 </div>
-                <span className="font-medium">LinkedIn Profile</span>
+                <span className="font-[500]">LinkedIn Profile</span>
               </a>
-              <a href="https://github.com/S-AM-GUPTA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-muted hover:text-accent-cyan transition-colors group">
-                <div className="w-12 h-12 rounded-full bg-secondary-200 border border-white/5 flex items-center justify-center group-hover:border-accent-cyan/50 transition-colors">
+              <a href="https://github.com/S-AM-GUPTA" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors group">
+                <div className="w-12 h-12 rounded-[12px] bg-[var(--color-paper-white)] flex items-center justify-center group-hover:bg-[var(--color-sea-foam)] transition-colors">
                   <GithubIcon />
                 </div>
-                <span className="font-medium">GitHub Profile</span>
+                <span className="font-[500]">GitHub Profile</span>
               </a>
-              <a href="#" className="flex items-center gap-4 text-muted hover:text-foreground transition-colors group">
-                <div className="w-12 h-12 rounded-full bg-secondary-200 border border-white/5 flex items-center justify-center group-hover:border-white/50 transition-colors">
-                  <FileText className="w-5 h-5" />
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors group">
+                <div className="w-12 h-12 rounded-[12px] bg-[var(--color-paper-white)] flex items-center justify-center group-hover:bg-[var(--color-sea-foam)] transition-colors">
+                  <FileText className="w-5 h-5 text-[var(--color-deep-teal)]" />
                 </div>
-                <span className="font-medium">Download Resume</span>
+                <span className="font-[500]">Download Resume</span>
               </a>
             </div>
           </div>
@@ -64,42 +64,44 @@ export function Contact() {
           <form className="lg:col-span-3 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-muted">Name</label>
+                <label className="text-[12px] font-mono tracking-widest text-[var(--color-deep-teal)] uppercase">Name</label>
                 <input 
                   type="text" 
-                  className="w-full bg-secondary-200/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-accent-blue/50 focus:ring-1 focus:ring-accent-blue/50 transition-all"
+                  className="w-full bg-[var(--color-paper-white)] border border-transparent rounded-[8px] px-4 py-3 text-[14px] text-[var(--color-charcoal-navy)] placeholder:text-[var(--color-charcoal-navy)] placeholder:opacity-50 focus:outline-none focus:border-[var(--color-deep-teal)] transition-all"
                   placeholder="John Doe"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-muted">Email</label>
+                <label className="text-[12px] font-mono tracking-widest text-[var(--color-deep-teal)] uppercase">Email</label>
                 <input 
                   type="email" 
-                  className="w-full bg-secondary-200/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-accent-blue/50 focus:ring-1 focus:ring-accent-blue/50 transition-all"
+                  className="w-full bg-[var(--color-paper-white)] border border-transparent rounded-[8px] px-4 py-3 text-[14px] text-[var(--color-charcoal-navy)] placeholder:text-[var(--color-charcoal-navy)] placeholder:opacity-50 focus:outline-none focus:border-[var(--color-deep-teal)] transition-all"
                   placeholder="john@example.com"
                 />
               </div>
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium text-muted">Subject</label>
+              <label className="text-[12px] font-mono tracking-widest text-[var(--color-deep-teal)] uppercase">Subject</label>
               <input 
                 type="text" 
-                className="w-full bg-secondary-200/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-accent-blue/50 focus:ring-1 focus:ring-accent-blue/50 transition-all"
+                className="w-full bg-[var(--color-paper-white)] border border-transparent rounded-[8px] px-4 py-3 text-[14px] text-[var(--color-charcoal-navy)] placeholder:text-[var(--color-charcoal-navy)] placeholder:opacity-50 focus:outline-none focus:border-[var(--color-deep-teal)] transition-all"
                 placeholder="Project Inquiry"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-muted">Message</label>
+              <label className="text-[12px] font-mono tracking-widest text-[var(--color-deep-teal)] uppercase">Message</label>
               <textarea 
                 rows={4}
-                className="w-full bg-secondary-200/50 border border-white/10 rounded-xl px-4 py-3 text-foreground focus:outline-none focus:border-accent-blue/50 focus:ring-1 focus:ring-accent-blue/50 transition-all resize-none"
+                className="w-full bg-[var(--color-paper-white)] border border-transparent rounded-[8px] px-4 py-3 text-[14px] text-[var(--color-charcoal-navy)] placeholder:text-[var(--color-charcoal-navy)] placeholder:opacity-50 focus:outline-none focus:border-[var(--color-deep-teal)] transition-all resize-none"
                 placeholder="Tell me about your idea..."
               />
             </div>
 
-            <Button className="w-full">Send Message</Button>
+            <button className="w-full py-3 rounded-[48px] text-[16px] font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors">
+              Send Message
+            </button>
           </form>
 
         </div>

@@ -32,16 +32,17 @@ export function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b",
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled 
-          ? "bg-background/90 backdrop-blur-md border-white/10 py-4 shadow-lg" 
-          : "bg-background/80 backdrop-blur-sm border-white/5 py-6",
-        isOpen ? "bg-background" : ""
+          ? "bg-[var(--color-paper-white)]/95 backdrop-blur-md border-b border-[var(--color-card-mint)] py-4" 
+          : "bg-transparent py-6",
+        isOpen ? "bg-[var(--color-paper-white)]" : ""
       )}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tighter text-foreground flex items-center gap-3 relative z-50">
-          <img src="/logo.png" alt="Logo" className="w-12 h-12 md:w-14 md:h-14 object-contain" />
+        <a href="#" className="text-xl font-bold tracking-tighter text-[var(--color-charcoal-navy)] flex items-center gap-3 relative z-50">
+          {/* Logo can be left as is, but we might want to invert it if it's a white PNG */}
+          <img src="/logo.png" alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain filter brightness-0" />
           <span>Saksham Gupta</span>
         </a>
 
@@ -51,23 +52,24 @@ export function Navigation() {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-muted hover:text-foreground transition-colors"
+              className="text-[14px] font-[400] text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors rounded-full px-4 py-2 hover:bg-[var(--color-card-mint)]"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
+        {/* Sign Up / Let's Talk CTA */}
         <a 
           href="#contact"
-          className="hidden md:inline-flex px-5 py-2 rounded-full text-sm font-medium border border-white/10 hover:bg-white/5 transition-colors relative z-50"
+          className="hidden md:inline-flex px-6 py-2.5 rounded-[48px] text-[14px] font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors relative z-50"
         >
           Let's Talk
         </a>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-foreground relative z-50"
+          className="md:hidden p-2 text-[var(--color-charcoal-navy)] relative z-50"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -79,14 +81,14 @@ export function Navigation() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 w-full bg-background border-b border-white/10 py-6 px-6 flex flex-col gap-6 md:hidden shadow-2xl"
+          className="absolute top-full left-0 w-full bg-[var(--color-paper-white)] border-b border-[var(--color-card-mint)] py-6 px-6 flex flex-col gap-6 md:hidden shadow-lg"
         >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="text-lg font-medium text-foreground hover:text-accent-blue transition-colors"
+              className="text-lg font-[500] text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors"
             >
               {item.name}
             </a>
@@ -94,7 +96,7 @@ export function Navigation() {
           <a 
             href="#contact"
             onClick={() => setIsOpen(false)}
-            className="inline-block text-center w-full px-5 py-3 mt-4 rounded-full text-base font-medium bg-white/10 hover:bg-white/20 transition-colors text-white"
+            className="inline-block text-center w-full px-5 py-3 mt-4 rounded-[48px] text-base font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors"
           >
             Let's Talk
           </a>

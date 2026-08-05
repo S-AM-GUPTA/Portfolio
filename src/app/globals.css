@@ -1,102 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #000000;
-  --color-secondary-100: #0a0a0a;
-  --color-secondary-200: #111111;
-  
-  /* Refined, elegant accents instead of saturated neons */
-  --color-accent-primary: #ffffff;
-  --color-accent-glow: rgba(255, 255, 255, 0.05);
-  --color-accent-muted: #888888;
-  
-  --color-foreground: #ffffff;
-  --color-muted: #a1a1aa;
-  
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Colors */
+  --color-deep-teal: #1c5d5f;
+  --color-pine-shadow: #0e4749;
+  --color-sage: #65b8a2;
+  --color-lake-teal: #2a7779;
+  --color-forest-floor: #156152;
+  --color-ink-navy: #16325a;
+  --color-dusty-rose: #d6aec1;
+  --color-mint-mist: #a2cbcd;
+  --color-sea-foam: #cae1e2;
+  --color-paper-white: #f2f8f7;
+  --color-card-mint: #e4f0f1;
+  --color-blush-sand: #f2e8e2;
+  --color-charcoal-navy: #283338;
+  --color-slate: #333333;
+  --color-soft-black: #1a1a1a;
+  --color-illustration-ink: #231e21;
+
+  /* Typography */
+  --font-serif: var(--font-p22-mackinac-pro), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-sofia-pro), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-88: 88px;
+  --spacing-112: 112px;
+
+  /* Border Radius */
+  --radius-full: 48px;
+  --radius-full-2: 88px;
+  --radius-full-3: 100px;
+  --radius-full-4: 1000px;
 }
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: var(--color-paper-white);
+  --foreground: var(--color-charcoal-navy);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: var(--color-sage);
+  color: var(--color-charcoal-navy);
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--color-paper-white);
 }
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: var(--color-mint-mist);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
-}
-
-/* Elegant text gradient used by Apple / Linear */
-@utility text-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Animated Background Pattern from Reference */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-  background-size: 20% 20%, 30% 30%, 25% 25%;
-  z-index: -2;
-  animation: backgroundMove 30s ease-in-out infinite;
-  pointer-events: none;
-}
-
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  z-index: -1;
-  animation: gridMove 20s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes backgroundMove {
-  0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
-  33% { background-position: 20% 10%, 30% 20%, 10% 30%; }
-  66% { background-position: 10% 30%, 20% 10%, 30% 20%; }
-}
-
-@keyframes gridMove {
-  0% { background-position: 0 0; }
-  100% { background-position: 40px 40px; }
+  background: var(--color-deep-teal);
 }

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { TiltCard } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 
 const GithubIcon = () => (
@@ -13,9 +12,9 @@ const projects = [
   {
     title: "QuickMate",
     description: "Full-stack, location-based platform connecting users with nearby helpers for daily tasks.",
-    tags: ["MERN Stack", "TypeScript", "Socket.io", "MongoDB"],
+    tags: ["MERN Stack", "TypeScript", "Socket.io"],
     features: ["Geospatial Search", "Role-based Access", "Real-time Messaging"],
-    color: "from-white/10 to-white/5",
+    bgColor: "bg-[var(--color-card-mint)]",
     image: "/qu.png",
     link: "https://quick-mate.vercel.app",
     code: "https://github.com/S-AM-GUPTA/QuickMate"
@@ -24,8 +23,8 @@ const projects = [
     title: "VaidyaVaani",
     description: "AI-enabled platform to simplify medical reports and prescriptions for everyday users.",
     tags: ["MERN Stack", "AI APIs", "MongoDB"],
-    features: ["AI Summarization Pipeline", "Medicine-Conflict Detection"],
-    color: "from-white/10 to-transparent",
+    features: ["AI Summarization", "Medicine-Conflict Detection"],
+    bgColor: "bg-[var(--color-blush-sand)]",
     image: "/vv.png",
     link: "https://vaidya-vaani.vercel.app",
     code: "https://github.com/S-AM-GUPTA/VaidyaVaani"
@@ -35,7 +34,7 @@ const projects = [
     description: "A concept platform helping local retailers establish an online presence.",
     tags: ["MERN Stack", "MongoDB"],
     features: ["Self-serve Onboarding", "Location-aware Discovery"],
-    color: "from-white/5 to-white/10",
+    bgColor: "bg-[var(--color-sea-foam)]",
     image: "/bz.png",
     link: "",
     code: "https://github.com/S-AM-GUPTA/BazrLink"
@@ -44,7 +43,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-12 md:py-24 relative z-10">
+    <section id="projects" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
           title="Featured Work" 
@@ -55,64 +54,65 @@ export function Projects() {
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <TiltCard className="h-full group">
-                <div className={`w-full h-48 rounded-xl bg-gradient-to-br ${project.color} border border-white/5 mb-6 relative overflow-hidden flex items-center justify-center group/img`}>
+              <div className={`h-full rounded-[12px] ${project.bgColor} p-6 flex flex-col`}>
+                <div className="w-full h-48 rounded-[8px] bg-[var(--color-paper-white)] mb-6 relative overflow-hidden group">
                    {project.image ? (
                      <img 
                        src={project.image} 
                        alt={project.title} 
-                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                      />
                    ) : (
-                     <>
-                       {/* Abstract Placeholder for Project Image */}
-                       <div className="absolute inset-0 bg-black/20 backdrop-blur-sm group-hover:backdrop-blur-none transition-all duration-500" />
-                       <h3 className="text-3xl font-black text-white/80 z-10 tracking-tighter mix-blend-overlay">
+                     <div className="absolute inset-0 flex items-center justify-center">
+                       <h3 className="text-3xl font-[500] font-serif text-[var(--color-ink-navy)] tracking-tighter">
                          {project.title.substring(0, 2).toUpperCase()}
                        </h3>
-                     </>
+                     </div>
                    )}
                 </div>
 
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-foreground">{project.title}</h3>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-[24px] font-[500] font-serif text-[var(--color-charcoal-navy)] leading-[1.2]">{project.title}</h3>
                   <div className="flex items-center gap-2">
                     {project.code && (
-                      <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 text-muted hover:text-foreground transition-colors" aria-label="View Source">
+                      <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-[var(--color-paper-white)] text-[var(--color-ink-navy)] transition-colors" aria-label="View Source">
                         <GithubIcon />
                       </a>
                     )}
                     {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-white/10 text-muted hover:text-foreground transition-colors" aria-label="Visit Site">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-[var(--color-paper-white)] text-[var(--color-ink-navy)] transition-colors" aria-label="Visit Site">
                         <ExternalLink className="w-5 h-5" />
                       </a>
                     )}
                   </div>
                 </div>
 
-                <p className="text-muted mb-6 flex-grow">{project.description}</p>
+                <p className="text-[16px] text-[var(--color-charcoal-navy)] opacity-80 mb-6 flex-grow leading-[1.6]">
+                  {project.description}
+                </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.features.map(feature => (
-                    <span key={feature} className="text-xs font-medium text-foreground/80 bg-white/5 px-2 py-1 rounded">
-                      ✓ {feature}
-                    </span>
-                  ))}
+                <div className="flex flex-col gap-4 mt-auto border-t border-[var(--color-paper-white)] pt-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.features.map(feature => (
+                      <span key={feature} className="text-[12px] font-[500] text-[var(--color-ink-navy)] bg-[var(--color-paper-white)] px-2 py-1 rounded-[4px]">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="text-[12px] font-mono text-[var(--color-deep-teal)] uppercase tracking-widest">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/10 w-full">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-xs font-medium text-white/50">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </TiltCard>
+              </div>
             </motion.div>
           ))}
         </div>
