@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useState } from "react";
 
-const skillsList = [
+export const skillsList = [
   { name: "React.js", image: "/skills/react.png", color: "bg-[var(--color-card-mint)]" },
   { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white border border-[var(--color-mint-mist)]" },
   { name: "TypeScript", image: "/skills/typescript.png", color: "bg-[var(--color-sea-foam)]" },

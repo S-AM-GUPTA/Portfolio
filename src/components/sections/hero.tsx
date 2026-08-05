@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { skillsList } from "@/components/sections/skills";
 
 export function Hero() {
   const containerVariants: import("framer-motion").Variants = {
@@ -92,24 +93,24 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator Animation */}
+      {/* Skill Logos Marquee */}
       <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-0 left-0 w-full overflow-hidden bg-[var(--color-paper-white)]/80 backdrop-blur-sm border-t border-[var(--color-mint-mist)]/30 py-4 flex items-center z-20"
       >
-        <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--color-charcoal-navy)] opacity-50">Scroll</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-8 h-12 rounded-full border-2 border-[var(--color-mint-mist)] flex justify-center pt-2"
+          className="flex gap-12 items-center w-max pr-12"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         >
-          <motion.div 
-            animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 rounded-full bg-[var(--color-deep-teal)]"
-          />
+          {/* Render twice for seamless infinite scroll */}
+          {[...skillsList, ...skillsList].map((skill, i) => (
+            <div key={`${skill.name}-${i}`} className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" title={skill.name}>
+              <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
+            </div>
+          ))}
         </motion.div>
       </motion.div>
     </section>
