@@ -13,7 +13,7 @@ const journeySteps = [
 
 export function Journey() {
   return (
-    <section id="journey" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
+    <section id="journey" className="py-20 relative z-10 bg-transparent">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
           title="The Journey" 

@@ -36,7 +36,13 @@ export default function RootLayout({
       lang="en"
       className={`${lora.variable} ${dmSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[var(--color-paper-white)] text-[var(--color-charcoal-navy)]">
+        {/* Global Background Code Image */}
+        <div 
+          className="fixed inset-0 z-[-1] bg-[url('/code-bg.png')] bg-cover bg-center opacity-[0.15] filter invert pointer-events-none" 
+        />
+        {children}
+      </body>
     </html>
   );
 }

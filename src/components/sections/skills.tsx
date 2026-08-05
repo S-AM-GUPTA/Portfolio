@@ -90,7 +90,7 @@ function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: numbe
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 relative z-10 bg-[var(--color-paper-white)]">
+    <section id="skills" className="py-24 relative z-10 bg-transparent">
       
       <div className="container mx-auto px-6 md:px-12 relative z-20">
         <SectionHeading 
