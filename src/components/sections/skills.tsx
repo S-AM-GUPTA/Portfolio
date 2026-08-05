@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { useState } from "react";
 
@@ -20,67 +20,44 @@ const skillsList = [
   { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000", color: "bg-[var(--color-blush-sand)]" },
 ];
 
-function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: number }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  
-  // Spring config for buttery smooth floating effect
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 25 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 25 });
-  
+function DockItem({ skill, index }: { skill: typeof skillsList[0], index: number }) {
   const [isHovered, setIsHovered] = useState(false);
-
-  function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
-    // Calculate mouse position relative to the chip's center
-    x.set(event.clientX - rect.left - rect.width / 2);
-    y.set(event.clientY - rect.top - rect.height / 2);
-  }
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 30, filter: "blur(10px)", scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
+      initial={{ opacity: 0, y: 20, scale: 0.8 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={handleMouseMove}
+      transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+      className="relative group flex items-center justify-center cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative cursor-default"
-      style={{ zIndex: isHovered ? 50 : 10 }} // Ensure hovered chip preview appears above others
     >
-      <div className={`px-6 py-3 md:px-8 md:py-4 rounded-[48px] ${skill.color} shadow-sm hover:shadow-md transition-shadow duration-300 flex items-center justify-center`}>
-        <span className="text-[16px] md:text-[18px] font-[500] text-[var(--color-charcoal-navy)]">
-          {skill.name}
-        </span>
-      </div>
+      <motion.div
+        animate={{ 
+          y: isHovered ? -12 : 0, 
+          scale: isHovered ? 1.2 : 1 
+        }}
+        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+        className={`w-14 h-14 md:w-16 md:h-16 rounded-[16px] ${skill.color} shadow-sm group-hover:shadow-xl group-hover:shadow-[var(--color-deep-teal)]/20 border border-white/60 flex items-center justify-center p-3 relative z-10`}
+      >
+        <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
+      </motion.div>
 
+      {/* Tooltip */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
-            style={{ 
-              x: mouseXSpring, 
-              y: mouseYSpring, 
-              left: '50%', 
-              top: '50%',
-              marginLeft: '-60px', // Half of width (120px)
-              marginTop: '-140px', // Position it above the cursor
-            }}
-            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.5, rotate: 10 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute pointer-events-none"
+            initial={{ opacity: 0, y: 10, scale: 0.8 }}
+            animate={{ opacity: 1, y: -25, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-0 whitespace-nowrap px-3 py-1.5 bg-[var(--color-charcoal-navy)] text-white text-[12px] font-[500] rounded-[8px] pointer-events-none z-50 shadow-xl"
+            style={{ y: "-100%", marginTop: "-16px" }}
           >
-            <div className="w-[120px] h-[120px] bg-white rounded-[24px] shadow-2xl flex items-center justify-center border-4 border-[var(--color-card-mint)] relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-sea-foam)]/40 to-transparent pointer-events-none" />
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <img src={skill.image} alt={skill.name} className="w-12 h-12 object-contain" />
-              </motion.div>
-            </div>
+            {skill.name}
+            {/* Tooltip Arrow */}
+            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[var(--color-charcoal-navy)] rotate-45" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -90,19 +67,21 @@ function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: numbe
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 relative z-10 bg-transparent">
-      
+    <section id="skills" className="py-24 relative z-10 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-20">
         <SectionHeading 
           title="Technical Arsenal" 
-          subtitle="Hover over the chips below to see a playful preview of the technologies I use every day."
+          subtitle="The tools and technologies I use to bring ideas to life."
           centered
         />
 
-        <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-4 md:gap-6 mt-12">
-          {skillsList.map((skill, index) => (
-            <SkillChip key={skill.name} skill={skill} index={index} />
-          ))}
+        <div className="mt-16 w-full flex justify-center pb-12">
+          {/* Glass Toolbar Container */}
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 p-4 md:p-6 bg-[var(--color-paper-white)]/40 backdrop-blur-2xl border border-white/60 rounded-[32px] shadow-2xl shadow-[var(--color-deep-teal)]/5 w-max max-w-full">
+            {skillsList.map((skill, index) => (
+              <DockItem key={skill.name} skill={skill} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
