@@ -112,7 +112,7 @@ export function Certificates() {
                 transition={{ duration: 0.3 }}
               >
                 <div className={`h-full flex flex-col group p-0 overflow-hidden rounded-[12px] ${cert.bgColor || 'bg-[var(--color-card-mint)]'}`}>
-                  <div className="h-48 bg-[var(--color-paper-white)] relative flex items-center justify-center overflow-hidden m-4 mb-0 rounded-[8px]">
+                  <div className="aspect-video bg-[var(--color-paper-white)] relative flex items-center justify-center overflow-hidden m-4 mb-0 rounded-[8px]">
                     {cert.file ? (
                       <>
                         <iframe 
