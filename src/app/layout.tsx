@@ -39,12 +39,14 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col relative">
         {/* Subtle Coding Watermark */}
         <div 
-          className="fixed inset-0 pointer-events-none z-0 opacity-10"
+          className="fixed inset-0 pointer-events-none z-0 opacity-15"
           style={{
             backgroundImage: "url('/bg-code.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
+            filter: "invert(1)",
+            mixBlendMode: "multiply",
           }}
         />
         {/* Main Content (elevated above watermark) */}
