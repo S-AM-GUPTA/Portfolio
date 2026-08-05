@@ -9,15 +9,15 @@
   --color-forest-floor: #156152;
   --color-ink-navy: #16325a;
   --color-dusty-rose: #d6aec1;
-  --color-mint-mist: #a2cbcd;
-  --color-sea-foam: #cae1e2;
-  --color-paper-white: #f2f8f7;
-  --color-card-mint: #e4f0f1;
-  --color-blush-sand: #f2e8e2;
-  --color-charcoal-navy: #283338;
+  --color-mint-mist: #e2d9c8;
+  --color-sea-foam: #f0ebd8;
+  --color-paper-white: #fdfbf7;
+  --color-card-mint: #f6f4eb;
+  --color-blush-sand: #f3efe0;
+  --color-charcoal-navy: #2a2a2a;
   --color-slate: #333333;
   --color-soft-black: #1a1a1a;
-  --color-illustration-ink: #231e21;
+  --color-illustration-ink: #2a2a2a;
 
   /* Typography */
   --font-serif: var(--font-p22-mackinac-pro), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
