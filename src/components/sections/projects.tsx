@@ -86,13 +86,13 @@ export function Projects() {
               whileHover={{ y: -10, transition: { duration: 0.4, ease: "easeOut" } }}
               className={`h-full rounded-[12px] ${project.bgColor} p-6 flex flex-col shadow-sm hover:shadow-2xl hover:shadow-[var(--color-deep-teal)]/20 transition-shadow duration-500`}
             >
-              <div className="w-full h-48 rounded-[8px] bg-[var(--color-paper-white)] mb-6 relative overflow-hidden group">
+              <div className="w-full h-64 rounded-[8px] bg-[var(--color-paper-white)] mb-6 relative overflow-hidden group flex items-center justify-center p-4">
                  {project.image ? (
-                     <img 
-                       src={project.image} 
-                       alt={project.title} 
-                       className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                     />
+                   <img 
+                     src={project.image} 
+                     alt={project.title} 
+                     className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                   />
                  ) : (
                    <div className="absolute inset-0 flex items-center justify-center">
                      <h3 className="text-3xl font-[500] font-serif text-[var(--color-ink-navy)] tracking-tighter">
