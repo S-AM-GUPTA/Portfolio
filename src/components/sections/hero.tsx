@@ -26,6 +26,7 @@ export function Hero() {
   };
 
   return (
+    <>
     <section className="relative min-h-[100vh] flex flex-col justify-center pt-[15vh] lg:pt-[20vh] pb-24 bg-[var(--color-paper-white)] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         
@@ -92,27 +93,23 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Skill Logos Marquee */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-0 left-0 w-full overflow-hidden bg-[var(--color-paper-white)]/80 backdrop-blur-sm border-t border-[var(--color-mint-mist)]/30 py-4 flex items-center z-20"
-      >
-        <motion.div
-          className="flex gap-12 items-center w-max pr-12"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        >
-          {/* Render twice for seamless infinite scroll */}
-          {[...skillsList, ...skillsList].map((skill, i) => (
-            <div key={`${skill.name}-${i}`} className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" title={skill.name}>
-              <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
     </section>
+
+    {/* Skill Logos Marquee Banner */}
+    <div className="w-full overflow-hidden bg-[var(--color-paper-white)]/60 backdrop-blur-md border-y border-[var(--color-mint-mist)]/30 py-6 flex items-center relative z-20">
+      <motion.div
+        className="flex gap-12 items-center w-max pr-12"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      >
+        {/* Render twice for seamless infinite scroll */}
+        {[...skillsList, ...skillsList].map((skill, i) => (
+          <div key={`${skill.name}-${i}`} className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" title={skill.name}>
+            <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+    </>
   );
 }
