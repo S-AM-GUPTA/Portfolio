@@ -2,22 +2,22 @@
 
 @theme {
   /* Colors */
-  --color-deep-teal: #6b9080;
-  --color-pine-shadow: #3d5a50;
-  --color-sage: #a4c3b2;
-  --color-lake-teal: #6b9080;
-  --color-forest-floor: #4c6b5e;
-  --color-ink-navy: #1f2e29;
-  --color-dusty-rose: #cce3de;
-  --color-mint-mist: #a4c3b2;
-  --color-sea-foam: #cce3de;
-  --color-paper-white: #f6fff8;
-  --color-card-mint: #eaf4f4;
-  --color-blush-sand: #cce3de;
-  --color-charcoal-navy: #1f2e29;
-  --color-slate: #333333;
-  --color-soft-black: #1a1a1a;
-  --color-illustration-ink: #1f2e29;
+  --color-deep-teal: #cb997e;
+  --color-pine-shadow: #6b705c;
+  --color-sage: #cb997e;
+  --color-lake-teal: #a5a58d;
+  --color-forest-floor: #6b705c;
+  --color-ink-navy: #3f4335;
+  --color-dusty-rose: #cb997e;
+  --color-mint-mist: #ddbea9;
+  --color-sea-foam: #b7b7a4;
+  --color-paper-white: #ffe8d6;
+  --color-card-mint: #ddbea9;
+  --color-blush-sand: #b7b7a4;
+  --color-charcoal-navy: #4a4d3f;
+  --color-slate: #6b705c;
+  --color-soft-black: #3f4335;
+  --color-illustration-ink: #3f4335;
 
   /* Typography */
   --font-serif: var(--font-p22-mackinac-pro), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
