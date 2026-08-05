@@ -26,8 +26,6 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[100vh] flex flex-col justify-center pt-[15vh] lg:pt-[20vh] pb-24 bg-[var(--color-paper-white)] overflow-hidden">
-
-      
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         
         {/* Left Side: Text */}

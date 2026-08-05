@@ -6,18 +6,18 @@ import { useState } from "react";
 
 const skillsList = [
   { name: "React.js", image: "/skills/react.png", color: "bg-[var(--color-card-mint)]" },
-  { name: "Next.js", image: "/skills/nextjs.png", color: "bg-[var(--color-paper-white)] border border-[var(--color-mint-mist)]" },
+  { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white border border-[var(--color-mint-mist)]" },
   { name: "TypeScript", image: "/skills/typescript.png", color: "bg-[var(--color-sea-foam)]" },
   { name: "JavaScript", image: "/skills/javascript.png", color: "bg-[var(--color-blush-sand)]" },
   { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs/339933", color: "bg-[var(--color-card-mint)]" },
-  { name: "Express.js", image: "https://cdn.simpleicons.org/express/ffffff", color: "bg-[var(--color-paper-white)] border border-[var(--color-mint-mist)]" },
+  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000", color: "bg-white border border-[var(--color-mint-mist)]" },
   { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb/47A248", color: "bg-[var(--color-sea-foam)]" },
   { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql/4169E1", color: "bg-[var(--color-card-mint)]" },
   { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "bg-[var(--color-blush-sand)]" },
   { name: "Framer Motion", image: "https://cdn.simpleicons.org/framer/0055FF", color: "bg-[var(--color-sea-foam)]" },
-  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB", color: "bg-[var(--color-paper-white)] border border-[var(--color-mint-mist)]" },
+  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB", color: "bg-white border border-[var(--color-mint-mist)]" },
   { name: "Git", image: "/skills/git.png", color: "bg-[var(--color-card-mint)]" },
-  { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/ffffff", color: "bg-[var(--color-blush-sand)]" },
+  { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000", color: "bg-[var(--color-blush-sand)]" },
 ];
 
 function SkillChip({ skill, index }: { skill: typeof skillsList[0], index: number }) {

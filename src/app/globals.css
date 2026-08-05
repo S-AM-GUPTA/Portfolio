@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors - Dark Mode + Glass Theme */
-  --color-deep-teal: #65b8a2; /* Lightened for contrast against dark bg */
-  --color-pine-shadow: #2a7779;
-  --color-sage: #cae1e2;
-  --color-lake-teal: #a2cbcd;
-  --color-forest-floor: #1c5d5f;
-  --color-ink-navy: #f2f8f7; /* Now acts as white/bright text */
+  /* Colors */
+  --color-deep-teal: #1c5d5f;
+  --color-pine-shadow: #0e4749;
+  --color-sage: #65b8a2;
+  --color-lake-teal: #2a7779;
+  --color-forest-floor: #156152;
+  --color-ink-navy: #16325a;
   --color-dusty-rose: #d6aec1;
-  --color-mint-mist: rgba(162, 203, 205, 0.2);
-  --color-sea-foam: rgba(20, 40, 40, 0.4); /* Translucent dark */
-  --color-paper-white: rgba(10, 15, 20, 0.6); /* Deep translucent bg */
-  --color-card-mint: rgba(20, 30, 35, 0.4); /* Translucent dark */
-  --color-blush-sand: rgba(30, 20, 25, 0.4); /* Translucent dark */
-  --color-charcoal-navy: #f2f8f7; /* Base text color, now light */
-  --color-slate: #cccccc;
-  --color-soft-black: #fafafa;
-  --color-illustration-ink: #f2f8f7;
+  --color-mint-mist: #a2cbcd;
+  --color-sea-foam: #cae1e2;
+  --color-paper-white: #f2f8f7;
+  --color-card-mint: #e4f0f1;
+  --color-blush-sand: #f2e8e2;
+  --color-charcoal-navy: #283338;
+  --color-slate: #333333;
+  --color-soft-black: #1a1a1a;
+  --color-illustration-ink: #231e21;
 
   /* Typography */
   --font-serif: var(--font-p22-mackinac-pro), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
@@ -50,10 +50,6 @@
 
 body {
   background-color: var(--background);
-  background-image: url('/bg-code.png');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
