@@ -59,7 +59,7 @@ export function Certificates() {
   });
 
   return (
-    <section id="certificates" className="py-20 relative z-10 bg-transparent">
+    <section id="certificates" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
           title="Certifications" 
@@ -112,7 +112,7 @@ export function Certificates() {
                 transition={{ duration: 0.3 }}
               >
                 <div className={`h-full flex flex-col group p-0 overflow-hidden rounded-[12px] ${cert.bgColor || 'bg-[var(--color-card-mint)]'}`}>
-                  <div className="aspect-video bg-[var(--color-paper-white)] relative flex items-center justify-center overflow-hidden m-4 mb-0 rounded-[8px]">
+                  <div className="aspect-video bg-[var(--color-paper-white)] relative flex items-center justify-center overflow-hidden mx-4 mt-4 mb-0 rounded-[8px]">
                     {cert.file ? (
                       <>
                         <iframe 
