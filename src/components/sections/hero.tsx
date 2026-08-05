@@ -25,10 +25,11 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-16 md:pb-20 bg-[var(--color-paper-white)]">
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center max-w-[800px]">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         
+        {/* Left Side: Text */}
         <motion.div 
-          className="w-full flex flex-col items-center"
+          className="w-full lg:w-[60%] flex flex-col items-start text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -47,7 +48,7 @@ export function Hero() {
             I build modern web applications, AI-powered systems, and scalable architectures that transform ideas into real-world impact.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center gap-4">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
             <a 
               href="#projects"
               className="px-6 py-3 rounded-[48px] text-[16px] font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors"
@@ -64,6 +65,22 @@ export function Hero() {
             </a>
           </motion.div>
 
+        </motion.div>
+
+        {/* Right Side: Portrait */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+          className="w-full max-w-[320px] sm:max-w-sm lg:w-[40%] relative mt-8 lg:mt-0 mx-auto lg:mx-0"
+        >
+          <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden border-8 border-[var(--color-card-mint)] bg-[var(--color-blush-sand)] group">
+            <img 
+              src="/portrait.png" 
+              alt="Saksham Portrait" 
+              className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+            />
+          </div>
         </motion.div>
       </div>
     </section>
