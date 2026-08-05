@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col relative">
         {/* Subtle Coding Watermark */}
         <div 
-          className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
+          className="fixed inset-0 pointer-events-none z-0 opacity-10"
           style={{
             backgroundImage: "url('/bg-code.png')",
             backgroundSize: "cover",
