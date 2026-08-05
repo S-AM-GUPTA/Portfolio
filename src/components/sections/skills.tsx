@@ -31,6 +31,36 @@ const skillCategories = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  visible: {
+    opacity: 1, 
+    y: 0, 
+    filter: "blur(0px)",
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const badgeVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } 
+  }
+};
+
 export function Skills() {
   return (
     <section id="skills" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
@@ -42,15 +72,19 @@ export function Skills() {
           centered
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1000px] mx-auto">
-          {skillCategories.map((category, idx) => (
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-[1000px] mx-auto"
+        >
+          {skillCategories.map((category) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`rounded-[12px] p-8 ${category.bgColor} flex flex-col items-start`}
+              variants={cardVariants}
+              whileHover={{ y: -5, transition: { duration: 0.3, ease: "easeOut" } }}
+              className={`rounded-[12px] p-8 ${category.bgColor} flex flex-col items-start shadow-sm hover:shadow-xl hover:shadow-[var(--color-deep-teal)]/10 transition-shadow duration-500`}
             >
               <div className="flex items-center gap-3 mb-6 text-[var(--color-deep-teal)]">
                 {category.icon}
@@ -61,17 +95,18 @@ export function Skills() {
               
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span 
+                  <motion.span 
+                    variants={badgeVariants}
                     key={skill} 
-                    className="px-4 py-2 bg-[var(--color-paper-white)] rounded-[48px] text-[15px] font-[500] text-[var(--color-charcoal-navy)] whitespace-nowrap"
+                    className="px-4 py-2 bg-[var(--color-paper-white)] rounded-[48px] text-[15px] font-[500] text-[var(--color-charcoal-navy)] whitespace-nowrap hover:bg-[var(--color-deep-teal)] hover:text-white transition-colors duration-300 cursor-default"
                   >
                     {skill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

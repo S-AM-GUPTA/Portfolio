@@ -41,6 +41,28 @@ const projects = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, filter: "blur(10px)", scale: 0.95 },
+  visible: {
+    opacity: 1, 
+    y: 0, 
+    filter: "blur(0px)",
+    scale: 1,
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
 export function Projects() {
   return (
     <section id="projects" className="py-20 relative z-10 bg-[var(--color-paper-white)]">
@@ -50,72 +72,75 @@ export function Projects() {
           subtitle="A selection of my best projects, focusing on scalable architectures, AI integrations, and real-world impact."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {projects.map((project) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              variants={cardVariants}
+              whileHover={{ y: -10, transition: { duration: 0.4, ease: "easeOut" } }}
+              className={`h-full rounded-[12px] ${project.bgColor} p-6 flex flex-col shadow-sm hover:shadow-2xl hover:shadow-[var(--color-deep-teal)]/20 transition-shadow duration-500`}
             >
-              <div className={`h-full rounded-[12px] ${project.bgColor} p-6 flex flex-col`}>
-                <div className="w-full h-48 rounded-[8px] bg-[var(--color-paper-white)] mb-6 relative overflow-hidden group">
-                   {project.image ? (
-                     <img 
-                       src={project.image} 
-                       alt={project.title} 
-                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                     />
-                   ) : (
-                     <div className="absolute inset-0 flex items-center justify-center">
-                       <h3 className="text-3xl font-[500] font-serif text-[var(--color-ink-navy)] tracking-tighter">
-                         {project.title.substring(0, 2).toUpperCase()}
-                       </h3>
-                     </div>
-                   )}
+              <div className="w-full h-48 rounded-[8px] bg-[var(--color-paper-white)] mb-6 relative overflow-hidden group">
+                 {project.image ? (
+                   <img 
+                     src={project.image} 
+                     alt={project.title} 
+                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                   />
+                 ) : (
+                   <div className="absolute inset-0 flex items-center justify-center">
+                     <h3 className="text-3xl font-[500] font-serif text-[var(--color-ink-navy)] tracking-tighter">
+                       {project.title.substring(0, 2).toUpperCase()}
+                     </h3>
+                   </div>
+                 )}
+              </div>
+
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-[24px] font-[500] font-serif text-[var(--color-charcoal-navy)] leading-[1.2]">{project.title}</h3>
+                <div className="flex items-center gap-2">
+                  {project.code && (
+                    <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-[var(--color-paper-white)] text-[var(--color-ink-navy)] transition-colors hover:scale-110 active:scale-95" aria-label="View Source">
+                      <GithubIcon />
+                    </a>
+                  )}
+                  {project.link && (
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-[var(--color-paper-white)] text-[var(--color-ink-navy)] transition-colors hover:scale-110 active:scale-95" aria-label="Visit Site">
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  )}
                 </div>
+              </div>
 
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-[24px] font-[500] font-serif text-[var(--color-charcoal-navy)] leading-[1.2]">{project.title}</h3>
-                  <div className="flex items-center gap-2">
-                    {project.code && (
-                      <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-[var(--color-paper-white)] text-[var(--color-ink-navy)] transition-colors" aria-label="View Source">
-                        <GithubIcon />
-                      </a>
-                    )}
-                    {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-[var(--color-paper-white)] text-[var(--color-ink-navy)] transition-colors" aria-label="Visit Site">
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                  </div>
+              <p className="text-[16px] text-[var(--color-charcoal-navy)] opacity-80 mb-6 flex-grow leading-[1.6]">
+                {project.description}
+              </p>
+
+              <div className="flex flex-col gap-4 mt-auto border-t border-[var(--color-paper-white)] pt-4">
+                <div className="flex flex-wrap gap-2">
+                  {project.features.map(feature => (
+                    <span key={feature} className="text-[12px] font-[500] text-[var(--color-ink-navy)] bg-[var(--color-paper-white)] px-2 py-1 rounded-[4px] hover:bg-[var(--color-deep-teal)] hover:text-white transition-colors duration-300">
+                      {feature}
+                    </span>
+                  ))}
                 </div>
-
-                <p className="text-[16px] text-[var(--color-charcoal-navy)] opacity-80 mb-6 flex-grow leading-[1.6]">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-col gap-4 mt-auto border-t border-[var(--color-paper-white)] pt-4">
-                  <div className="flex flex-wrap gap-2">
-                    {project.features.map(feature => (
-                      <span key={feature} className="text-[12px] font-[500] text-[var(--color-ink-navy)] bg-[var(--color-paper-white)] px-2 py-1 rounded-[4px]">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-[12px] font-mono text-[var(--color-deep-teal)] uppercase tracking-widest">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="text-[12px] font-mono text-[var(--color-deep-teal)] uppercase tracking-widest">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
