@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { BrainCircuit, Rocket, Code2, Users } from "lucide-react";
 
-const textVariants = {
+const textVariants: any = {
   hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
   visible: { 
     opacity: 1, 
@@ -14,7 +14,7 @@ const textVariants = {
   }
 };
 
-const containerVariants = {
+const containerVariants: any = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -25,7 +25,7 @@ const containerVariants = {
   }
 };
 
-const cardVariants = {
+const cardVariants: any = {
   hidden: { opacity: 0, y: 50, filter: "blur(10px)", scale: 0.95 },
   visible: {
     opacity: 1, 
