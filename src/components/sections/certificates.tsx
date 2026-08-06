@@ -86,7 +86,7 @@ export function Certificates() {
           </div>
 
           {/* Search */}
-          <div className="relative w-full md:w-64">
+          <div className="relative w-full md:w-64 shrink-0">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-charcoal-navy)] opacity-50" />
             <input 
               type="text" 

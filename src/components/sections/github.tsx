@@ -8,16 +8,55 @@ import { useState, useEffect } from "react";
 
 export function GithubSection() {
   const [mounted, setMounted] = useState(false);
+  const [githubData, setGithubData] = useState({
+    repos: "7",
+    stars: "1",
+    prs: "0"
+  });
   
   useEffect(() => {
     setMounted(true);
+    
+    async function fetchGitHubData() {
+      try {
+        const username = "S-AM-GUPTA";
+        
+        // Fetch user data for repos
+        const userRes = await fetch(`https://api.github.com/users/${username}`);
+        if (!userRes.ok) return;
+        const userData = await userRes.json();
+        
+        // Fetch PRs
+        const prRes = await fetch(`https://api.github.com/search/issues?q=author:${username}+type:pr`);
+        const prData = prRes.ok ? await prRes.json() : { total_count: 0 };
+        
+        // Fetch repos for stars (up to 100)
+        const reposRes = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+        const reposData = reposRes.ok ? await reposRes.json() : [];
+        
+        let totalStars = 0;
+        if (Array.isArray(reposData)) {
+          totalStars = reposData.reduce((acc: number, repo: any) => acc + (repo.stargazers_count || 0), 0);
+        }
+
+        setGithubData({
+          repos: userData.public_repos?.toString() || "7",
+          stars: totalStars.toString() || "1",
+          prs: prData.total_count?.toString() || "0"
+        });
+      } catch (error) {
+        console.error("Failed to fetch GitHub data:", error);
+      }
+    }
+    
+    fetchGitHubData();
   }, []);
 
   const stats = [
     { icon: <GitCommit className="w-5 h-5 text-green-400" />, label: "Yearly Contributions", value: "54" },
-    { icon: <Star className="w-5 h-5 text-yellow-400" />, label: "Stars Earned", value: "1" },
-    { icon: <GitPullRequest className="w-5 h-5 text-purple-400" />, label: "Pull Requests", value: "0" },
-    { icon: <GitMerge className="w-5 h-5 text-blue-400" />, label: "Repositories", value: "7" },
+    { icon: <Star className="w-5 h-5 text-yellow-400" />, label: "Stars Earned", value: githubData.stars },
+    { icon: <GitPullRequest className="w-5 h-5 text-purple-400" />, label: "Pull Requests", value: githubData.prs },
+    { icon: <GitMerge className="w-5 h-5 text-blue-400" />, label: "Repositories", value: githubData.repos },
   ];
 
   return (
