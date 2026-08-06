@@ -9,9 +9,9 @@ import { useState, useEffect } from "react";
 export function GithubSection() {
   const [mounted, setMounted] = useState(false);
   const [githubData, setGithubData] = useState({
-    repos: "7",
-    stars: "1",
-    prs: "0"
+    repos: "-",
+    stars: "-",
+    prs: "-"
   });
   
   useEffect(() => {

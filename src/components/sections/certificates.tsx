@@ -69,12 +69,12 @@ export function Certificates() {
         <div className="flex flex-col md:flex-row gap-6 mb-12 items-center justify-between">
           
           {/* Categories */}
-          <div className="flex overflow-x-auto pb-2 md:pb-0 w-full md:w-auto gap-2 no-scrollbar">
+          <div className="flex overflow-x-auto pb-2 md:pb-0 w-full md:flex-1 gap-2 no-scrollbar min-w-0 mr-0 md:mr-4">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-4 py-2 rounded-full text-[14px] font-[500] whitespace-nowrap transition-colors ${
+                className={`px-4 py-2 rounded-full text-[14px] font-[500] whitespace-nowrap transition-colors shrink-0 ${
                   filter === cat 
                     ? "bg-[var(--color-deep-teal)] text-white" 
                     : "bg-[var(--color-card-mint)] text-[var(--color-charcoal-navy)] hover:bg-[var(--color-sea-foam)]"
