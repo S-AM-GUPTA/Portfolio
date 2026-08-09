@@ -70,8 +70,8 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
         className="relative group cursor-pointer transition-transform duration-300"
         style={{ transform: hovered ? 'scale(1.2)' : 'scale(1)' }}
       >
-        <div className={`w-16 h-16 rounded-full ${skill.color} shadow-lg flex items-center justify-center overflow-hidden border-2 border-[var(--color-paper-white)] p-3`}>
-          <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
+        <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full ${skill.color} shadow-lg flex items-center justify-center border-2 border-[var(--color-paper-white)] p-0`}>
+          <img src={skill.image} alt={skill.name} className="w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-md" />
         </div>
         
         {/* Tooltip */}
