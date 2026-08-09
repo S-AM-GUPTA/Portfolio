@@ -72,7 +72,7 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
     <Html 
       position={position} 
       center 
-      distanceFactor={60} // Scaled 4x larger as requested
+      distanceFactor={15} // Restored back to 15 so text doesn't zoom in massively
       zIndexRange={[100, 0]}
     >
       <div 
@@ -81,8 +81,8 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
         className="relative group cursor-pointer transition-transform duration-300"
         style={{ transform: hovered ? 'scale(1.2)' : 'scale(1)' }}
       >
-        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white shadow-2xl flex items-center justify-center border-[4px] md:border-[6px] border-[var(--color-card-mint)] overflow-hidden relative">
-          <img src={skill.image} alt={skill.name} className="w-3/5 h-3/5 object-contain drop-shadow-md relative z-10" />
+        <div className="w-48 h-48 md:w-64 md:h-64 rounded-full bg-white shadow-2xl flex items-center justify-center border-[6px] md:border-[10px] border-[var(--color-card-mint)] overflow-hidden relative">
+          <img src={skill.image} alt={skill.name} className="w-3/5 h-3/5 object-contain drop-shadow-lg relative z-10" />
         </div>
         
         {/* Tooltip */}
