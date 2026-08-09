@@ -6,7 +6,7 @@ import { OrbitControls, Html } from "@react-three/drei";
 import { SectionHeading } from "@/components/ui/section-heading";
 import * as THREE from "three";
 
-const skillsList = [
+export const skillsList = [
   { name: "React.js", image: "/skills/react.png", color: "bg-[var(--color-card-mint)]" },
   { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white" },
   { name: "TypeScript", image: "/skills/typescript.png", color: "bg-[var(--color-sea-foam)]" },
