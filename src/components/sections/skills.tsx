@@ -72,7 +72,7 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
     <Html 
       position={position} 
       center 
-      distanceFactor={15} // Restored back to 15 so text doesn't zoom in massively
+      distanceFactor={60} // Scaled 4x larger as requested
       zIndexRange={[100, 0]}
     >
       <div 
