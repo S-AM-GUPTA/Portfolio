@@ -7,19 +7,29 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import * as THREE from "three";
 
 export const skillsList = [
-  { name: "React.js", image: "/skills/react.png", color: "bg-[var(--color-card-mint)]" },
-  { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white" },
-  { name: "TypeScript", image: "/skills/typescript.png", color: "bg-[var(--color-sea-foam)]" },
-  { name: "JavaScript", image: "/skills/javascript.png", color: "bg-[var(--color-blush-sand)]" },
-  { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs/339933", color: "bg-[var(--color-card-mint)]" },
-  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000", color: "bg-white" },
-  { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb/47A248", color: "bg-[var(--color-sea-foam)]" },
-  { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql/4169E1", color: "bg-[var(--color-card-mint)]" },
-  { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "bg-[var(--color-blush-sand)]" },
-  { name: "Framer Motion", image: "https://cdn.simpleicons.org/framer/0055FF", color: "bg-[var(--color-sea-foam)]" },
-  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB", color: "bg-white" },
-  { name: "Git", image: "/skills/git.png", color: "bg-[var(--color-card-mint)]" },
-  { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000", color: "bg-[var(--color-blush-sand)]" },
+  { name: "React.js", image: "/skills/react.png" },
+  { name: "Next.js", image: "/skills/nextjs.png" },
+  { name: "TypeScript", image: "/skills/typescript.png" },
+  { name: "JavaScript", image: "/skills/javascript.png" },
+  { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs/339933" },
+  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000" },
+  { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb/47A248" },
+  { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql/4169E1" },
+  { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+  { name: "Framer Motion", image: "https://cdn.simpleicons.org/framer/0055FF" },
+  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB" },
+  { name: "Git", image: "/skills/git.png" },
+  { name: "GitHub", image: "https://cdn.simpleicons.org/github/181717" },
+  { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000" },
+  { name: "HTML5", image: "https://cdn.simpleicons.org/html5/E34F26" },
+  { name: "CSS3", image: "https://cdn.simpleicons.org/css3/1572B6" },
+  { name: "Java", image: "https://cdn.simpleicons.org/openjdk/437291" },
+  { name: "C++", image: "https://cdn.simpleicons.org/cplusplus/00599C" },
+  { name: "C", image: "https://cdn.simpleicons.org/c/A8B9CC" },
+  { name: "Docker", image: "https://cdn.simpleicons.org/docker/2496ED" },
+  { name: "Linux", image: "https://cdn.simpleicons.org/linux/FCC624" },
+  { name: "Firebase", image: "https://cdn.simpleicons.org/firebase/FFCA28" },
+  { name: "Figma", image: "https://cdn.simpleicons.org/figma/F24E1E" },
 ];
 
 function SkillCloud() {
@@ -40,7 +50,8 @@ function SkillCloud() {
       const x = Math.cos(theta) * radius;
       const z = Math.sin(theta) * radius;
       
-      pts.push(new THREE.Vector3(x * 6, y * 6, z * 6)); // Scale the sphere radius to 6
+      // Radius of the sphere is reduced to 4.5 for a tighter cluster
+      pts.push(new THREE.Vector3(x * 4.5, y * 4.5, z * 4.5)); 
     }
     return pts;
   }, []);
@@ -61,7 +72,7 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
     <Html 
       position={position} 
       center 
-      distanceFactor={15} // Makes the HTML elements scale with 3D depth
+      distanceFactor={22} // Increased dramatically so the logos appear much larger in 3D space
       zIndexRange={[100, 0]}
     >
       <div 
@@ -70,8 +81,8 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
         className="relative group cursor-pointer transition-transform duration-300"
         style={{ transform: hovered ? 'scale(1.2)' : 'scale(1)' }}
       >
-        <div className={`w-20 h-20 md:w-24 md:h-24 rounded-full ${skill.color} shadow-lg flex items-center justify-center border-2 border-[var(--color-paper-white)] p-0`}>
-          <img src={skill.image} alt={skill.name} className="w-10 h-10 md:w-14 md:h-14 object-contain drop-shadow-md" />
+        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl flex items-center justify-center border-4 border-[var(--color-card-mint)] p-0">
+          <img src={skill.image} alt={skill.name} className="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-sm" />
         </div>
         
         {/* Tooltip */}
