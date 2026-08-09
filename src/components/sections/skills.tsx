@@ -1,88 +1,113 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Html } from "@react-three/drei";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { useState } from "react";
+import * as THREE from "three";
 
-export const skillsList = [
+const skillsList = [
   { name: "React.js", image: "/skills/react.png", color: "bg-[var(--color-card-mint)]" },
-  { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white border border-[var(--color-mint-mist)]" },
+  { name: "Next.js", image: "/skills/nextjs.png", color: "bg-white" },
   { name: "TypeScript", image: "/skills/typescript.png", color: "bg-[var(--color-sea-foam)]" },
   { name: "JavaScript", image: "/skills/javascript.png", color: "bg-[var(--color-blush-sand)]" },
   { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs/339933", color: "bg-[var(--color-card-mint)]" },
-  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000", color: "bg-white border border-[var(--color-mint-mist)]" },
+  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000", color: "bg-white" },
   { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb/47A248", color: "bg-[var(--color-sea-foam)]" },
   { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql/4169E1", color: "bg-[var(--color-card-mint)]" },
   { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss/06B6D4", color: "bg-[var(--color-blush-sand)]" },
   { name: "Framer Motion", image: "https://cdn.simpleicons.org/framer/0055FF", color: "bg-[var(--color-sea-foam)]" },
-  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB", color: "bg-white border border-[var(--color-mint-mist)]" },
+  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB", color: "bg-white" },
   { name: "Git", image: "/skills/git.png", color: "bg-[var(--color-card-mint)]" },
   { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000", color: "bg-[var(--color-blush-sand)]" },
 ];
 
-function DockItem({ skill, index }: { skill: typeof skillsList[0], index: number }) {
-  const [isHovered, setIsHovered] = useState(false);
+function SkillCloud() {
+  const groupRef = useRef<THREE.Group>(null);
+  
+  // Distribute points evenly on a sphere using the Fibonacci sphere algorithm
+  const points = useMemo(() => {
+    const pts = [];
+    const numPoints = skillsList.length;
+    const phi = Math.PI * (3 - Math.sqrt(5)); // golden angle
+    
+    for (let i = 0; i < numPoints; i++) {
+      const y = 1 - (i / (numPoints - 1)) * 2; // y goes from 1 to -1
+      const radius = Math.sqrt(1 - y * y); // radius at y
+      
+      const theta = phi * i; // golden angle increment
+      
+      const x = Math.cos(theta) * radius;
+      const z = Math.sin(theta) * radius;
+      
+      pts.push(new THREE.Vector3(x * 6, y * 6, z * 6)); // Scale the sphere radius to 6
+    }
+    return pts;
+  }, []);
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20, scale: 0.8 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
-      className="relative group flex items-center justify-center cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <motion.div
-        animate={{ 
-          y: isHovered ? -12 : 0, 
-          scale: isHovered ? 1.2 : 1 
-        }}
-        transition={{ type: "spring", stiffness: 400, damping: 15 }}
-        className={`w-14 h-14 md:w-16 md:h-16 rounded-[16px] ${skill.color} shadow-sm group-hover:shadow-xl group-hover:shadow-[var(--color-deep-teal)]/20 border border-white/60 flex items-center justify-center p-3 relative z-10`}
-      >
-        <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
-      </motion.div>
+    <group ref={groupRef}>
+      {skillsList.map((skill, i) => (
+        <SkillLogo key={skill.name} skill={skill} position={points[i]} />
+      ))}
+    </group>
+  );
+}
 
-      {/* Tooltip */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.8 }}
-            animate={{ opacity: 1, y: -25, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-0 whitespace-nowrap px-3 py-1.5 bg-[var(--color-charcoal-navy)] text-white text-[12px] font-[500] rounded-[8px] pointer-events-none z-50 shadow-xl"
-            style={{ y: "-100%", marginTop: "-16px" }}
-          >
-            {skill.name}
-            {/* Tooltip Arrow */}
-            <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[var(--color-charcoal-navy)] rotate-45" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position: THREE.Vector3 }) {
+  const [hovered, setHovered] = useState(false);
+  
+  return (
+    <Html 
+      position={position} 
+      center 
+      distanceFactor={15} // Makes the HTML elements scale with 3D depth
+      zIndexRange={[100, 0]}
+    >
+      <div 
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="relative group cursor-pointer transition-transform duration-300"
+        style={{ transform: hovered ? 'scale(1.2)' : 'scale(1)' }}
+      >
+        <div className={`w-16 h-16 rounded-full ${skill.color} shadow-lg flex items-center justify-center overflow-hidden border-2 border-[var(--color-paper-white)] p-3`}>
+          <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
+        </div>
+        
+        {/* Tooltip */}
+        <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-[var(--color-charcoal-navy)] text-white text-[12px] font-[500] rounded-[8px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}>
+          {skill.name}
+        </div>
+      </div>
+    </Html>
   );
 }
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 relative z-10 bg-transparent overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 relative z-20">
+    <section id="skills" className="py-24 relative z-10 bg-transparent flex flex-col items-center justify-center overflow-hidden">
+      
+      {/* Title placed statically over the 3D canvas */}
+      <div className="container mx-auto px-6 md:px-12 relative z-20 pointer-events-none mb-0">
         <SectionHeading 
           title="Technical Arsenal" 
-          subtitle="The tools and technologies I use to bring ideas to life."
+          subtitle="An interactive 3D constellation of my technological proficiency. Grab and spin to explore."
           centered
         />
+      </div>
 
-        <div className="mt-16 w-full flex justify-center pb-12">
-          {/* Glass Toolbar Container */}
-          <div className="flex flex-wrap justify-center gap-3 md:gap-4 p-4 md:p-6 bg-[var(--color-paper-white)]/40 backdrop-blur-2xl border border-white/60 rounded-[32px] shadow-2xl shadow-[var(--color-deep-teal)]/5 w-max max-w-full">
-            {skillsList.map((skill, index) => (
-              <DockItem key={skill.name} skill={skill} index={index} />
-            ))}
-          </div>
-        </div>
+      {/* The 3D Interactive Canvas */}
+      <div className="relative w-full h-[450px] lg:h-[600px] z-10 pointer-events-none md:pointer-events-auto md:cursor-grab md:active:cursor-grabbing -mt-12">
+        <Canvas camera={{ position: [0, 0, 16], fov: 50 }}>
+          <ambientLight intensity={0.5} />
+          <SkillCloud />
+          <OrbitControls 
+            enablePan={false} 
+            enableZoom={false} 
+            autoRotate 
+            autoRotateSpeed={1.5} // Smooth automatic rotation
+          />
+        </Canvas>
       </div>
     </section>
   );
