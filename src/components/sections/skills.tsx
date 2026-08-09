@@ -11,25 +11,25 @@ export const skillsList = [
   { name: "Next.js", image: "/skills/nextjs.png" },
   { name: "TypeScript", image: "/skills/typescript.png" },
   { name: "JavaScript", image: "/skills/javascript.png" },
-  { name: "Node.js", image: "https://cdn.simpleicons.org/nodedotjs/339933" },
-  { name: "Express.js", image: "https://cdn.simpleicons.org/express/000000" },
-  { name: "MongoDB", image: "https://cdn.simpleicons.org/mongodb/47A248" },
-  { name: "PostgreSQL", image: "https://cdn.simpleicons.org/postgresql/4169E1" },
-  { name: "Tailwind CSS", image: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
-  { name: "Framer Motion", image: "https://cdn.simpleicons.org/framer/0055FF" },
-  { name: "Python", image: "https://cdn.simpleicons.org/python/3776AB" },
-  { name: "Git", image: "/skills/git.png" },
-  { name: "GitHub", image: "https://cdn.simpleicons.org/github/181717" },
-  { name: "Vercel", image: "https://cdn.simpleicons.org/vercel/000000" },
-  { name: "HTML5", image: "https://cdn.simpleicons.org/html5/E34F26" },
-  { name: "CSS3", image: "https://cdn.simpleicons.org/css3/1572B6" },
-  { name: "Java", image: "https://cdn.simpleicons.org/openjdk/437291" },
-  { name: "C++", image: "https://cdn.simpleicons.org/cplusplus/00599C" },
-  { name: "C", image: "https://cdn.simpleicons.org/c/A8B9CC" },
-  { name: "Docker", image: "https://cdn.simpleicons.org/docker/2496ED" },
-  { name: "Linux", image: "https://cdn.simpleicons.org/linux/FCC624" },
-  { name: "Firebase", image: "https://cdn.simpleicons.org/firebase/FFCA28" },
-  { name: "Figma", image: "https://cdn.simpleicons.org/figma/F24E1E" },
+  { name: "Node.js", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
+  { name: "Express.js", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" },
+  { name: "MongoDB", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" },
+  { name: "PostgreSQL", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
+  { name: "Tailwind CSS", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+  { name: "Framer Motion", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg" },
+  { name: "Python", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+  { name: "Git", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
+  { name: "GitHub", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" },
+  { name: "Vercel", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" },
+  { name: "HTML5", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+  { name: "CSS3", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+  { name: "Java", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
+  { name: "C++", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" },
+  { name: "C", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
+  { name: "Docker", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
+  { name: "Linux", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" },
+  { name: "Firebase", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg" },
+  { name: "Figma", image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
 ];
 
 function SkillCloud() {
@@ -72,7 +72,7 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
     <Html 
       position={position} 
       center 
-      distanceFactor={22} // Increased dramatically so the logos appear much larger in 3D space
+      distanceFactor={15} // Restored back to 15 so text doesn't zoom in massively
       zIndexRange={[100, 0]}
     >
       <div 
@@ -81,8 +81,8 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
         className="relative group cursor-pointer transition-transform duration-300"
         style={{ transform: hovered ? 'scale(1.2)' : 'scale(1)' }}
       >
-        <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white shadow-xl flex items-center justify-center border-4 border-[var(--color-card-mint)] p-0">
-          <img src={skill.image} alt={skill.name} className="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-sm" />
+        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white shadow-xl flex items-center justify-center border-4 border-[var(--color-card-mint)] p-0">
+          <img src={skill.image} alt={skill.name} className="w-14 h-14 md:w-16 md:h-16 object-contain drop-shadow-sm" />
         </div>
         
         {/* Tooltip */}
