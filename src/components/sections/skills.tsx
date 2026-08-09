@@ -78,10 +78,10 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
       <div 
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative group cursor-pointer transition-transform duration-300 flex items-center justify-center"
+        className="w-24 h-24 md:w-32 md:h-32 relative group cursor-pointer transition-transform duration-300 flex items-center justify-center"
         style={{ transform: hovered ? 'scale(1.3)' : 'scale(1)' }}
       >
-        <img src={skill.image} alt={skill.name} className="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative z-10" />
+        <img src={skill.image} alt={skill.name} className="w-full h-full object-contain drop-shadow-2xl relative z-10" />
         
         {/* Tooltip */}
         <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-[var(--color-charcoal-navy)] text-white text-[12px] font-[500] rounded-[8px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}>
