@@ -78,7 +78,7 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
       <div 
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="w-36 h-36 md:w-48 md:h-48 relative group cursor-pointer transition-transform duration-300 flex items-center justify-center"
+        className="w-16 h-16 md:w-48 md:h-48 relative group cursor-pointer transition-transform duration-300 flex items-center justify-center"
         style={{ transform: hovered ? 'scale(1.3)' : 'scale(1)' }}
       >
         <img src={skill.image} alt={skill.name} className="w-full h-full object-contain drop-shadow-2xl relative z-10" />
