@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import { skillsList } from "@/components/sections/skills";
 
 export function Hero() {
   const containerVariants: import("framer-motion").Variants = {
@@ -26,7 +25,6 @@ export function Hero() {
   };
 
   return (
-    <>
     <section className="relative min-h-[100vh] flex flex-col justify-center pt-[15vh] lg:pt-[20vh] pb-24 bg-[var(--color-paper-white)] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
         
@@ -87,29 +85,33 @@ export function Hero() {
               <img 
                 src="/portrait.png" 
                 alt="Saksham Gupta Portrait" 
-                className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                className="w-full h-full object-cover grayscale-0 opacity-100 scale-105 md:grayscale md:opacity-90 md:scale-100 md:group-hover:grayscale-0 md:group-hover:opacity-100 md:group-hover:scale-105 transition-all duration-700"
               />
             </div>
           </motion.div>
         </motion.div>
       </div>
-    </section>
 
-    {/* Skill Logos Marquee Banner */}
-    <div className="w-full overflow-hidden bg-[var(--color-paper-white)]/60 backdrop-blur-md border-y border-[var(--color-mint-mist)]/30 py-6 flex items-center relative z-20">
-      <motion.div
-        className="flex gap-12 items-center w-max pr-12"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      {/* Scroll Indicator Animation */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        {/* Render twice for seamless infinite scroll */}
-        {[...skillsList, ...skillsList].map((skill, i) => (
-          <div key={`${skill.name}-${i}`} className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" title={skill.name}>
-            <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" />
-          </div>
-        ))}
+        <span className="text-[10px] font-mono tracking-widest uppercase text-[var(--color-charcoal-navy)] opacity-50">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-8 h-12 rounded-full border-2 border-[var(--color-mint-mist)] flex justify-center pt-2"
+        >
+          <motion.div 
+            animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1.5 h-1.5 rounded-full bg-[var(--color-deep-teal)]"
+          />
+        </motion.div>
       </motion.div>
-    </div>
-    </>
+    </section>
   );
 }
