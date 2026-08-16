@@ -55,39 +55,39 @@ export function Projects() {
   });
 
   // Smooth horizontal scroll transform across cards
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-68%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66%"]);
 
   return (
     <section 
       id="projects" 
       ref={containerRef} 
-      className="relative h-[320vh] bg-transparent"
+      className="relative h-[300vh] bg-transparent"
     >
-      {/* Sticky viewport window */}
-      <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+      {/* Sticky viewport window with top offset for fixed navbar */}
+      <div className="sticky top-0 h-screen flex items-center overflow-hidden pt-20 pb-8">
         <motion.div 
           style={{ x }} 
-          className="flex gap-10 md:gap-16 pl-[6vw] pr-[10vw] items-center h-full will-change-transform"
+          className="flex gap-10 md:gap-14 pl-[7vw] pr-[12vw] items-center h-full will-change-transform"
         >
           {/* Section Introduction Column */}
-          <div className="shrink-0 w-[clamp(280px,42vw,480px)] pr-[clamp(16px,3vw,36px)] flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <span className="text-[12px] font-mono tracking-widest uppercase text-[var(--color-ink-navy)] bg-[var(--color-card-mint)] px-3 py-1 rounded-full font-medium">
+          <div className="shrink-0 w-[clamp(260px,34vw,400px)] pr-[clamp(12px,2vw,28px)] flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="text-[11px] font-mono tracking-widest uppercase text-[var(--color-ink-navy)] bg-[var(--color-card-mint)] px-3 py-1 rounded-full font-medium">
                 Portfolio
               </span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium text-[var(--color-charcoal-navy)] leading-[1.05] tracking-tight mb-6">
-              Selected <br className="hidden sm:inline" />Works.
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-[var(--color-charcoal-navy)] leading-[1.05] tracking-tight mb-4">
+              Selected <br />Works.
             </h2>
             
-            <p className="text-base sm:text-lg text-[var(--color-charcoal-navy)] opacity-80 leading-relaxed max-w-[420px] mb-8 font-normal">
-              A curated collection of my full-stack and AI-driven applications, designed for real-world usability, performance, and clean scalable architecture.
+            <p className="text-sm sm:text-base text-[var(--color-charcoal-navy)] opacity-80 leading-relaxed max-w-[360px] mb-6 font-normal">
+              A curated collection of my full-stack and AI-driven applications, designed for real-world usability and clean scalable architecture.
             </p>
 
-            <div className="inline-flex items-center gap-3 text-sm font-mono text-[var(--color-ink-navy)] opacity-60">
-              <span className="animate-pulse">Scroll down to explore</span>
-              <ArrowRight className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2.5 text-xs font-mono text-[var(--color-ink-navy)] opacity-60">
+              <span className="animate-pulse">Scroll to explore</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </div>
 
@@ -95,42 +95,42 @@ export function Projects() {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="w-[85vw] max-w-[860px] shrink-0 relative group"
+              className="w-[74vw] sm:w-[65vw] max-w-[680px] shrink-0 relative group"
             >
-              <div className="bg-[var(--color-paper-white)]/90 backdrop-blur-md border border-black/10 rounded-[28px] p-6 sm:p-8 md:p-10 shadow-xl shadow-black/5 hover:shadow-2xl hover:shadow-[var(--color-deep-teal)]/15 transition-all duration-500 flex flex-col gap-6">
+              <div className="flex flex-col gap-4">
                 
-                {/* Image Mockup Showcase */}
+                {/* Sleek Image Mockup Frame */}
                 <div 
-                  className="w-full aspect-[16/10] sm:aspect-[16/9] rounded-[20px] overflow-hidden relative flex items-center justify-center p-4 sm:p-8 md:p-10 border border-black/5"
+                  className="w-full aspect-[16/10] max-h-[46vh] rounded-[18px] overflow-hidden relative flex items-center justify-center p-5 sm:p-7 border border-black/10 shadow-lg shadow-black/5 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[var(--color-deep-teal)]/15"
                   style={{ background: project.gradient }}
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-contain sm:object-cover rounded-[14px] shadow-2xl transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain rounded-[10px] shadow-xl transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
                   />
                 </div>
 
                 {/* Card Information */}
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div>
-                      <span className="text-xs font-mono text-[var(--color-deep-teal)] uppercase tracking-wider font-semibold">
+                <div className="flex flex-col gap-3 px-1">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex flex-col">
+                      <span className="text-[11px] font-mono text-[var(--color-deep-teal)] uppercase tracking-wider font-semibold">
                         0{index + 1} — {project.subtitle}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-[var(--color-charcoal-navy)] tracking-tight mt-1">
+                      <h3 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--color-charcoal-navy)] tracking-tight mt-0.5">
                         {project.title}
                       </h3>
                     </div>
 
                     {/* Action Links */}
-                    <div className="flex items-center gap-2 self-start sm:self-center">
+                    <div className="flex items-center gap-2 shrink-0">
                       {project.code && (
                         <a 
                           href={project.code} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[var(--color-card-mint)]/40 hover:bg-[var(--color-card-mint)] text-[var(--color-charcoal-navy)] text-xs font-mono font-medium transition-all hover:scale-105 active:scale-95"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-card-mint)]/40 hover:bg-[var(--color-card-mint)] text-[var(--color-charcoal-navy)] text-xs font-mono font-medium transition-all hover:scale-105 active:scale-95 border border-black/5"
                           aria-label="View Source Code"
                         >
                           <GithubIcon />
@@ -142,7 +142,7 @@ export function Projects() {
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-deep-teal)] text-white text-xs font-mono font-medium hover:bg-[var(--color-forest-floor)] shadow-md shadow-[var(--color-deep-teal)]/20 transition-all hover:scale-105 active:scale-95"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[var(--color-deep-teal)] text-white text-xs font-mono font-medium hover:bg-[var(--color-forest-floor)] shadow-sm shadow-[var(--color-deep-teal)]/20 transition-all hover:scale-105 active:scale-95"
                           aria-label="Visit Live Demo"
                         >
                           <span>Live Demo</span>
@@ -152,28 +152,28 @@ export function Projects() {
                     </div>
                   </div>
 
-                  <p className="text-sm sm:text-base text-[var(--color-charcoal-navy)] opacity-80 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-[var(--color-charcoal-navy)] opacity-75 leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Highlights and Tags */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-black/5">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-black/5">
+                    <div className="flex flex-wrap gap-1.5">
                       {project.features.map((feature) => (
                         <span 
                           key={feature} 
-                          className="text-[11px] font-medium text-[var(--color-ink-navy)] bg-black/5 px-2.5 py-1 rounded-md"
+                          className="text-[10px] font-medium text-[var(--color-ink-navy)] bg-black/5 px-2 py-0.5 rounded"
                         >
                           {feature}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {project.tags.map((tag) => (
                         <span 
                           key={tag} 
-                          className="text-[11px] font-mono text-[var(--color-deep-teal)] font-semibold"
+                          className="text-[10px] font-mono text-[var(--color-deep-teal)] font-semibold"
                         >
                           #{tag}
                         </span>
