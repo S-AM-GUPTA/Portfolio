@@ -36,24 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${lora.variable} ${dmSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col relative">
-        {/* Subtle Coding Watermark */}
-        <div 
-          className="fixed inset-0 pointer-events-none z-0 opacity-15"
-          style={{
-            backgroundImage: "url('/bg-code.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            filter: "invert(1)",
-            mixBlendMode: "multiply",
-          }}
-        />
-        {/* Main Content (elevated above watermark) */}
-        <div className="relative z-10 flex flex-col flex-1">
-          {children}
-        </div>
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
