@@ -40,12 +40,9 @@ export function Navigation() {
       )}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="text-xl font-serif font-bold tracking-tight flex items-center gap-3 relative z-50 group">
-          <div className="w-10 h-10 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] flex items-center justify-center shadow-[2px_2px_0_#2b1a05] overflow-hidden group-hover:rotate-12 transition-transform">
-            <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain filter brightness-0" />
-          </div>
+        <a href="#" className="text-xl font-serif font-bold tracking-tight relative z-50 group">
           <span className={cn(
-            "font-serif italic font-semibold text-lg sm:text-xl transition-colors duration-300",
+            "font-serif italic font-bold text-xl sm:text-2xl transition-colors duration-300",
             scrolled || isOpen ? "text-[#2b1a05]" : "text-[#faf7f3] drop-shadow-sm"
           )}>
             Saksham Gupta

@@ -25,32 +25,43 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen h-[100dvh] flex flex-col justify-between pt-24 lg:pt-28 pb-8 bg-[#0a0705] overflow-hidden">
+    <section className="relative min-h-screen lg:h-[100dvh] flex flex-col justify-between pt-24 lg:pt-28 pb-8 bg-[#0a0705] overflow-hidden">
       
-      {/* Full Background Photo filling entire landing viewport below Navbar */}
-      <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Raw Crisp Photo (Zero Hair Cropping, fills full landing view) */}
+      {/* DESKTOP BACKGROUND PHOTO (Hidden on mobile) */}
+      <div className="hidden lg:block absolute inset-0 z-0 overflow-hidden select-none">
         <img 
           src="/hero-bg.png" 
           alt="Saksham Gupta Profile" 
           className="absolute inset-x-0 top-[84px] lg:top-[92px] w-full h-[calc(100%-84px)] lg:h-[calc(100%-92px)] object-cover object-[15%_0%] opacity-100"
         />
         
-        {/* Soft Right Vignette behind Text Only */}
+        {/* Soft Right Vignette behind Text */}
         <div className="absolute inset-0 top-[84px] lg:top-[92px] bg-gradient-to-r from-transparent via-[#0a0705]/35 via-45% to-[#0a0705]/85 pointer-events-none" />
         
         {/* Top Fade below Navbar */}
         <div className="absolute top-[84px] lg:top-[92px] inset-x-0 h-6 bg-gradient-to-b from-[#0a0705] to-transparent pointer-events-none" />
         
-        {/* Smooth Blend at the very bottom edge of Hero (Visible ONLY when scrolling down to #about) */}
+        {/* Smooth Blend at bottom edge on scroll */}
         <div className="absolute -bottom-1 inset-x-0 h-16 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/60 to-transparent pointer-events-none z-20" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between my-auto gap-8">
         
-        {/* Floating Editorial Text Column directly on top of Full-Screen Image */}
+        {/* MOBILE PHOTO FIRST (Visible only on mobile/tablet) */}
+        <div className="w-full lg:hidden flex flex-col items-center">
+          <div className="w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden border-[2.5px] border-[#2b1a05] bg-[#0a0705] shadow-[6px_6px_0_#2b1a05] relative">
+            <img 
+              src="/hero-bg.png" 
+              alt="Saksham Gupta" 
+              className="w-full h-full object-cover object-[15%_top]" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0705]/80 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </div>
+
+        {/* EDITORIAL TEXT COLUMN (Below image on mobile, right-aligned on desktop) */}
         <motion.div 
-          className="w-full lg:w-[56%] xl:w-[52%] lg:ml-auto flex flex-col items-start text-left"
+          className="w-full lg:w-[56%] xl:w-[52%] lg:ml-auto flex flex-col items-start text-left z-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -62,7 +73,7 @@ export function Hero() {
               <span>Full-Stack Developer & AI Builder</span>
             </div>
             
-            {/* Handwritten cursive note */}
+            {/* Cursive note */}
             <span className="font-hand text-base md:text-lg text-[#ffca78] rotate-[-2deg] font-bold drop-shadow-md">
               ✦ crafting clean, scalable systems
             </span>
@@ -85,10 +96,10 @@ export function Hero() {
           </motion.p>
 
           {/* Action CTAs */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
             <a 
               href="#projects"
-              className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full border-[2.5px] border-[#2b1a05] bg-[#ffca78] text-[#2b1a05] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-[4px_4px_0_#2b1a05] hover:bg-[#faf7f3] hover:shadow-[6px_6px_0_#2b1a05] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 rounded-full border-[2.5px] border-[#2b1a05] bg-[#ffca78] text-[#2b1a05] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-[4px_4px_0_#2b1a05] hover:bg-[#faf7f3] hover:shadow-[6px_6px_0_#2b1a05] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all duration-200 w-full sm:w-auto text-center"
             >
               <span>Explore Works</span>
               <ArrowRight className="w-4 h-4" />
@@ -98,7 +109,7 @@ export function Hero() {
               href="/resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border-[2.5px] border-[#faf7f3]/50 bg-[#0a0705]/40 backdrop-blur-xs text-[#faf7f3] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-[3.5px_3.5px_0_rgba(0,0,0,0.6)] hover:border-[#ffca78] hover:text-[#ffca78] hover:bg-[#0a0705]/60 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border-[2.5px] border-[#faf7f3]/50 bg-[#0a0705]/40 backdrop-blur-xs text-[#faf7f3] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-[3.5px_3.5px_0_rgba(0,0,0,0.6)] hover:border-[#ffca78] hover:text-[#ffca78] hover:bg-[#0a0705]/60 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all duration-200 w-full sm:w-auto text-center"
             >
               <span>Resume PDF</span>
             </a>
@@ -125,15 +136,9 @@ export function Hero() {
         </motion.div>
 
       </div>
+
+      {/* Mobile Bottom Blend */}
+      <div className="lg:hidden absolute -bottom-1 inset-x-0 h-16 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/60 to-transparent pointer-events-none z-20" />
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
