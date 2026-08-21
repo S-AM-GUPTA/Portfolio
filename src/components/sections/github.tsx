@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GitCommit, Star, GitPullRequest, GitMerge } from "lucide-react";
 import { GitHubCalendar } from "react-github-calendar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export function GithubSection() {
   const [mounted, setMounted] = useState(false);
@@ -74,16 +74,16 @@ export function GithubSection() {
     fetchGitHubData();
   }, []);
 
-  // Transform data callback to sync calendar counts directly
-  const handleCalendarTransform = (data: any[]) => {
+  // Transform calendar data safely without triggering re-render loops
+  const handleCalendarTransform = useCallback((data: any[]) => {
     if (Array.isArray(data) && data.length > 0) {
       const total = data.reduce((acc: number, day: any) => acc + (day.count || 0), 0);
-      if (total && total > 0) {
-        setGithubData((prev) => ({ ...prev, contributions: total.toString() }));
+      if (total > 0) {
+        setGithubData((prev) => (prev.contributions === total.toString() ? prev : { ...prev, contributions: total.toString() }));
       }
     }
     return data;
-  };
+  }, []);
 
   const stats = [
     { icon: <GitCommit className="w-4 h-4 text-[#2b1a05]" />, label: "Contributions", value: githubData.contributions },
