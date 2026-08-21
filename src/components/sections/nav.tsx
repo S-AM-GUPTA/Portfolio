@@ -40,25 +40,20 @@ export function Navigation() {
       )}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className={cn("text-xl font-serif font-bold tracking-tight flex items-center gap-3 relative z-50 group transition-colors duration-300", scrolled || isOpen ? "text-[#2b1a05]" : "text-[#faf7f3]")}>
+        <a href="#" className="text-xl font-serif font-bold tracking-tight text-[#2b1a05] flex items-center gap-3 relative z-50 group">
           <div className="w-10 h-10 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] flex items-center justify-center shadow-[2px_2px_0_#2b1a05] overflow-hidden group-hover:rotate-12 transition-transform">
             <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain filter brightness-0" />
           </div>
-          <span className="font-serif italic font-medium drop-shadow-xs">Saksham Gupta</span>
+          <span className="font-serif italic font-medium">Saksham Gupta</span>
         </a>
 
         {/* Desktop Nav */}
-        <nav className={cn(
-          "hidden md:flex items-center gap-2 border-[2px] border-[#2b1a05] rounded-full p-1.5 backdrop-blur-md transition-all duration-300",
-          scrolled 
-            ? "bg-[#efe9da]/90 shadow-[2px_2px_0_rgba(43,26,5,0.08)]" 
-            : "bg-[#faf7f3] shadow-[3px_3px_0_#ffca78]"
-        )}>
+        <nav className="hidden md:flex items-center gap-2 bg-[#efe9da]/80 border-[2px] border-[#2b1a05]/20 rounded-full p-1.5 backdrop-blur-sm shadow-[2px_2px_0_rgba(43,26,5,0.08)]">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-xs font-mono font-bold tracking-wider uppercase text-[#2b1a05] hover:text-[#2b1a05] hover:bg-[#ffca78] transition-all rounded-full px-4 py-2 border border-transparent hover:border-[#2b1a05]/30"
+              className="text-xs font-mono font-medium tracking-wider uppercase text-[#2b1a05] hover:text-[#2b1a05] hover:bg-[#ffca78] transition-all rounded-full px-4 py-2 border border-transparent hover:border-[#2b1a05]/30"
             >
               {item.name}
             </a>
@@ -68,10 +63,10 @@ export function Navigation() {
         {/* Get in Touch CTA */}
         <a 
           href="#contact"
-          className="hidden md:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#2b1a05] hover:bg-[#ffca78] text-[#ffca78] hover:text-[#2b1a05] border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#ffca78] hover:shadow-[5px_5px_0_#2b1a05] hover:-translate-y-0.5 transition-all duration-200 relative z-50"
+          className="hidden md:inline-flex items-center gap-2 px-6 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#2b1a05] hover:bg-[#ffca78] text-[#ffca78] hover:text-[#2b1a05] border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#2b1a05] hover:shadow-[5px_5px_0_#2b1a05] hover:-translate-y-0.5 transition-all duration-200 relative z-50"
         >
           <span>Get in Touch</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
         </a>
 
         {/* Mobile Toggle */}
