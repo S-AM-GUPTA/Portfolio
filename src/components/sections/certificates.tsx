@@ -58,20 +58,20 @@ export function Certificates() {
     offset: ["start start", "end end"]
   });
 
-  // Smooth horizontal scroll transform across 5 certificate cards
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
+  // Smooth horizontal scroll transform across 5 certificate cards allowing full view of last card
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
     <section 
       id="certificates" 
       ref={containerRef} 
-      className="relative h-[380vh] bg-transparent"
+      className="relative h-[400vh] bg-transparent"
     >
       {/* Sticky viewport window with dynamic mobile viewport height */}
       <div className="sticky top-0 h-[100dvh] flex items-center overflow-hidden pt-16 pb-4 sm:pt-20 sm:pb-8">
         <motion.div 
           style={{ x }} 
-          className="flex gap-6 sm:gap-10 md:gap-14 pl-[5vw] sm:pl-[7vw] pr-[10vw] sm:pr-[12vw] items-center h-full will-change-transform"
+          className="flex gap-6 sm:gap-10 md:gap-14 pl-[5vw] sm:pl-[7vw] pr-[25vw] sm:pr-[15vw] items-center h-full will-change-transform"
         >
           {/* Section Introduction Column */}
           <div className="shrink-0 w-[240px] sm:w-[clamp(260px,34vw,400px)] pr-3 sm:pr-[clamp(12px,2vw,28px)] flex flex-col justify-center">
