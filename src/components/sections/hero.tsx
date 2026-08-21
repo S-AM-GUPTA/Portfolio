@@ -27,22 +27,22 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-28 lg:pt-32 pb-14 bg-[#0a0705] overflow-hidden">
       
-      {/* 100% Full-Screen Widescreen Background Photo (Raw Unfiltered High-Res Quality) */}
+      {/* Full Background Photo starting cleanly below Navbar with Top Alignment (Zero Hair Cropping) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Raw Crisp Photo without any filters or opacity degradation */}
+        {/* Raw Crisp Photo aligned to top (object-[15%_0%]) so hair sits fully visible below navbar */}
         <img 
           src="/hero-bg.png" 
           alt="Saksham Gupta Profile" 
-          className="absolute inset-x-0 top-[80px] lg:top-[88px] w-full h-[calc(100%-80px)] lg:h-[calc(100%-88px)] object-cover object-[20%_center] opacity-100"
+          className="absolute inset-x-0 top-[90px] lg:top-[100px] w-full h-[calc(100%-90px)] lg:h-[calc(100%-100px)] object-cover object-[15%_0%] opacity-100"
         />
         
-        {/* Soft Right Vignette behind Text Only (Leaves Face on Left 100% Natural & Crystal Clear) */}
-        <div className="absolute inset-0 top-[80px] lg:top-[88px] bg-gradient-to-r from-transparent via-[#0a0705]/40 via-45% to-[#0a0705]/80 pointer-events-none" />
+        {/* Soft Right Vignette behind Text Only (Leaves Face & Hair on Left 100% Crystal Clear) */}
+        <div className="absolute inset-0 top-[90px] lg:top-[100px] bg-gradient-to-r from-transparent via-[#0a0705]/35 via-45% to-[#0a0705]/85 pointer-events-none" />
         
         {/* Top Fade below Navbar */}
-        <div className="absolute top-[80px] lg:top-[88px] inset-x-0 h-8 bg-gradient-to-b from-[#0a0705] to-transparent pointer-events-none" />
+        <div className="absolute top-[90px] lg:top-[100px] inset-x-0 h-6 bg-gradient-to-b from-[#0a0705] to-transparent pointer-events-none" />
         
-        {/* Clean Dark Bottom Transition into Next Section (No White Line / No White Fog) */}
+        {/* Clean Dark Bottom Transition into Next Section */}
         <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#0a0705] to-transparent pointer-events-none" />
       </div>
 
