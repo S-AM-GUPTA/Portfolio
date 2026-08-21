@@ -11,7 +11,8 @@ export function GithubSection() {
   const [githubData, setGithubData] = useState({
     repos: "-",
     stars: "-",
-    prs: "-"
+    prs: "-",
+    contributions: "-"
   });
   
   useEffect(() => {
@@ -20,11 +21,31 @@ export function GithubSection() {
     async function fetchGitHubData() {
       try {
         const username = "S-AM-GUPTA";
+
+        // Fetch live contributions from GitHub contributions API
+        let liveContributions = "-";
+        try {
+          const contribRes = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`);
+          if (contribRes.ok) {
+            const contribData = await contribRes.json();
+            if (Array.isArray(contribData.contributions)) {
+              const total = contribData.contributions.reduce((acc: number, day: any) => acc + (day.count || 0), 0);
+              if (total > 0) {
+                liveContributions = total.toString();
+              }
+            }
+          }
+        } catch (cErr) {
+          console.error("Failed to fetch contribution count:", cErr);
+        }
         
         // Fetch user data for repos
         const userRes = await fetch(`https://api.github.com/users/${username}`);
-        if (!userRes.ok) return;
-        const userData = await userRes.json();
+        let publicRepos = "7";
+        if (userRes.ok) {
+          const userData = await userRes.json();
+          publicRepos = userData.public_repos?.toString() || "7";
+        }
         
         // Fetch PRs
         const prRes = await fetch(`https://api.github.com/search/issues?q=author:${username}+type:pr`);
@@ -40,9 +61,10 @@ export function GithubSection() {
         }
 
         setGithubData({
-          repos: userData.public_repos?.toString() || "7",
-          stars: totalStars.toString() || "1",
-          prs: prData.total_count?.toString() || "0"
+          repos: publicRepos,
+          stars: totalStars.toString() || "0",
+          prs: prData.total_count?.toString() || "0",
+          contributions: liveContributions !== "-" ? liveContributions : "243"
         });
       } catch (error) {
         console.error("Failed to fetch GitHub data:", error);
@@ -52,8 +74,19 @@ export function GithubSection() {
     fetchGitHubData();
   }, []);
 
+  // Transform data callback to sync calendar counts directly
+  const handleCalendarTransform = (data: any[]) => {
+    if (Array.isArray(data) && data.length > 0) {
+      const total = data.reduce((acc: number, day: any) => acc + (day.count || 0), 0);
+      if (total && total > 0) {
+        setGithubData((prev) => ({ ...prev, contributions: total.toString() }));
+      }
+    }
+    return data;
+  };
+
   const stats = [
-    { icon: <GitCommit className="w-4 h-4 text-[#2b1a05]" />, label: "Contributions", value: "54+" },
+    { icon: <GitCommit className="w-4 h-4 text-[#2b1a05]" />, label: "Contributions", value: githubData.contributions },
     { icon: <Star className="w-4 h-4 text-[#2b1a05]" />, label: "Stars Earned", value: githubData.stars },
     { icon: <GitPullRequest className="w-4 h-4 text-[#2b1a05]" />, label: "Pull Requests", value: githubData.prs },
     { icon: <GitMerge className="w-4 h-4 text-[#2b1a05]" />, label: "Repositories", value: githubData.repos },
@@ -120,6 +153,7 @@ export function GithubSection() {
                   blockSize={12}
                   blockMargin={4}
                   fontSize={12}
+                  transformData={handleCalendarTransform}
                 />
               ) : (
                 <div className="text-xs font-mono text-[#2b1a05]/50">Loading activity...</div>
@@ -128,6 +162,7 @@ export function GithubSection() {
           </div>
 
         </div>
+
       </div>
     </section>
   );
