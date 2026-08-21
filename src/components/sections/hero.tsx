@@ -115,8 +115,8 @@ export function Hero() {
           <div className="relative group p-3.5 sm:p-4 pb-6 sm:pb-7 rounded-[22px] border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[7px_7px_0_#2b1a05] transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] max-w-[280px] sm:max-w-[320px] xl:max-w-[350px]">
             
             {/* Washi Tape / Push Pin Sticker */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-5.5 bg-[#ffca78]/95 border border-[#2b1a05]/30 rounded-sm rotate-[-2deg] shadow-xs flex items-center justify-center">
-              <span className="text-[9px] font-mono uppercase tracking-widest text-[#2b1a05] font-bold opacity-75">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-[#ffca78] border border-[#2b1a05]/40 rounded-xs rotate-[-2deg] shadow-xs flex items-center justify-center whitespace-nowrap z-20">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-[#2b1a05] font-bold opacity-80 whitespace-nowrap">
                 PORTFOLIO • 2026
               </span>
             </div>
