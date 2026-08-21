@@ -27,17 +27,20 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 lg:pt-28 pb-12 bg-[#060606] overflow-hidden">
       
-      {/* Background Workstation Photo (Expanding from Left Screen to Text Column) */}
+      {/* Background Workstation Photo (Full 16:9 Un-cropped View of Saksham + Laptop) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Workstation Photo filling left to center-right */}
-        <img 
-          src="/landscape-hero.png" 
-          alt="Saksham Gupta Workstation" 
-          className="absolute left-0 top-0 w-full lg:w-[58%] xl:w-[54%] h-full object-cover object-[15%_center] lg:object-left opacity-95 filter brightness-105 contrast-105"
-        />
+        {/* Left Side Photo Frame: Fits Saksham, Hands & Laptop completely without cropping */}
+        <div className="absolute left-0 lg:left-6 xl:left-12 top-1/2 -translate-y-1/2 w-full sm:w-[85%] lg:w-[48%] xl:w-[45%] max-h-[84vh] flex items-center justify-start pointer-events-none">
+          <img 
+            src="/landscape-hero.png" 
+            alt="Saksham Gupta Workstation & Laptop" 
+            className="w-full h-full object-contain object-left opacity-95 filter brightness-110 contrast-105"
+          />
+        </div>
         
-        {/* Seamless Horizontal Fade: Fades the right side of the photo directly into dark background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#060606]/40 via-45% to-[#060606] lg:from-black/10 lg:via-[#060606]/75 lg:via-50% lg:to-[#060606]" />
+        {/* Seamless Horizontal & Vertical Blend Overlays: Melts photo edges into #060606 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#060606]/30 via-40% to-[#060606] lg:from-transparent lg:via-[#060606]/75 lg:via-48% lg:to-[#060606]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060606] via-transparent via-50% to-[#060606]" />
         
         {/* Ambient Warm Radial Accent behind Text */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full lg:w-1/2 h-full bg-radial from-[#ffca78]/8 to-transparent pointer-events-none" />
