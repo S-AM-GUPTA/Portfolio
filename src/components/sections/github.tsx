@@ -60,7 +60,7 @@ export function GithubSection() {
   ];
 
   return (
-    <section id="github" className="py-24 relative z-10 bg-transparent">
+    <section id="github" className="py-16 md:py-20 relative z-10 bg-transparent">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
           tag="Open Source & Craft"

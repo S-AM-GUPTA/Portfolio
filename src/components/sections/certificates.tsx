@@ -100,13 +100,13 @@ export function Certificates() {
           {certificates.map((cert, index) => (
             <div
               key={cert.id}
-              className="w-[84vw] sm:w-[62vw] max-w-[640px] shrink-0 relative group"
+              className="w-[84vw] sm:w-[62vw] max-w-[620px] shrink-0 relative group"
             >
-              <div className="p-3.5 sm:p-7 rounded-2xl border-[2.5px] sm:border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[5px_5px_0_#2b1a05] sm:shadow-[8px_8px_0_#2b1a05] transition-all duration-300 group-hover:shadow-[10px_10px_0_#2b1a05] group-hover:-translate-y-1 flex flex-col gap-2.5 sm:gap-4 max-h-[calc(100dvh-100px)] overflow-hidden">
+              <div className="p-3.5 sm:p-5 lg:p-6 rounded-2xl border-[2.5px] sm:border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[5px_5px_0_#2b1a05] sm:shadow-[7px_7px_0_#2b1a05] transition-all duration-300 group-hover:shadow-[9px_9px_0_#2b1a05] group-hover:-translate-y-0.5 flex flex-col gap-2.5 sm:gap-3.5 max-h-[calc(100dvh-110px)] sm:max-h-[75vh] overflow-hidden">
                 
                 {/* Certificate Preview Frame */}
                 <div 
-                  className="w-full aspect-[16/9] sm:aspect-[16/10] max-h-[22vh] sm:max-h-[36vh] rounded-xl overflow-hidden relative flex items-center justify-center p-2.5 sm:p-5 border-[2px] sm:border-[2.5px] border-[#2b1a05] shadow-inner bg-gradient-to-br from-[#ffe3b0] via-[#faf7f3] to-[#efe9da]"
+                  className="w-full aspect-[16/9] max-h-[20vh] sm:max-h-[28vh] rounded-xl overflow-hidden relative flex items-center justify-center p-2.5 sm:p-4 border-[2px] sm:border-[2.5px] border-[#2b1a05] shadow-inner bg-gradient-to-br from-[#ffe3b0] via-[#faf7f3] to-[#efe9da]"
                 >
                   {cert.file ? (
                     <div className="w-full h-full relative rounded-[6px] sm:rounded-[8px] overflow-hidden bg-white border border-[#2b1a05]/20 shadow-md flex items-center justify-center">

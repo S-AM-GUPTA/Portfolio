@@ -96,7 +96,7 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 relative z-10 bg-transparent flex flex-col items-center justify-center overflow-hidden">
+    <section id="skills" className="py-16 md:py-20 relative z-10 bg-transparent flex flex-col items-center justify-center overflow-hidden">
       
       {/* Title placed statically over the 3D canvas */}
       <div className="container mx-auto px-6 md:px-12 relative z-20 pointer-events-none mb-0">

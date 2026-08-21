@@ -15,7 +15,7 @@ const LinkedinIcon = () => (
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 relative z-10 bg-transparent">
+    <section id="contact" className="py-16 md:py-20 relative z-10 bg-transparent">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
           tag="Get In Touch"
