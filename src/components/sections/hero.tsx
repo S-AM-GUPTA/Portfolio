@@ -47,15 +47,14 @@ export function Hero() {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between my-auto gap-8">
         
-        {/* MOBILE & TABLET PHOTO - Uses dedicated /hero-bg1.png */}
-        <div className="w-full lg:hidden flex flex-col items-center mt-3 sm:mt-6">
-          <div className="w-full aspect-[4/3.2] sm:aspect-[16/9] rounded-2xl overflow-hidden border-[2.5px] border-[#2b1a05] bg-[#0a0705] shadow-[6px_6px_0_#2b1a05] relative">
+        {/* MOBILE & TABLET PHOTO - Preserves 100% natural aspect ratio of hero-bg1.png (492x576) with zero cropping */}
+        <div className="w-full lg:hidden flex flex-col items-center mt-2 sm:mt-4">
+          <div className="max-w-[360px] sm:max-w-[420px] w-full aspect-[492/576] rounded-2xl overflow-hidden border-[2.5px] border-[#2b1a05] bg-[#0a0705] shadow-[6px_6px_0_#2b1a05] relative">
             <img 
               src="/hero-bg1.png" 
               alt="Saksham Gupta" 
-              className="w-full h-full object-cover object-center" 
+              className="w-full h-full object-contain" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0705]/60 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
 
