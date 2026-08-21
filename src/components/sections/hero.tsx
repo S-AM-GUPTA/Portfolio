@@ -27,28 +27,31 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-28 lg:pt-32 pb-14 bg-[#0a0705] overflow-hidden">
       
-      {/* Background Profile Photo (Framed on Left Side) */}
+      {/* Background Profile Photo (Full Widescreen 16:9 Framed on Left Side) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Face Photo - Scaled and positioned closer to center-left so face & text connect naturally */}
+        {/* Widescreen Face Photo - Shifted lower (top-16 lg:top-20) so hair sits below navbar */}
         <img 
           src="/hero-bg.png" 
           alt="Saksham Gupta Profile" 
-          className="absolute left-0 top-10 lg:top-14 w-full sm:w-[92%] lg:w-[68%] xl:w-[64%] h-[calc(100%-2.5rem)] lg:h-[calc(100%-3.5rem)] object-cover object-[25%_18%] lg:object-[26%_18%] opacity-95 filter brightness-105 contrast-105"
+          className="absolute left-0 top-16 lg:top-20 w-full sm:w-[88%] lg:w-[64%] xl:w-[60%] h-[calc(100%-4rem)] lg:h-[calc(100%-5rem)] object-cover object-[12%_top] lg:object-left-top opacity-95 filter brightness-105 contrast-105"
         />
         
         {/* Gradient Blend Overlays: Fades photo smoothly into deep espresso on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0a0705]/20 via-40% to-[#0a0705] lg:from-transparent lg:via-[#0a0705]/65 lg:via-48% lg:to-[#0a0705]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0705] via-transparent via-50% to-[#0a0705]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0a0705]/30 via-35% to-[#0a0705] lg:from-transparent lg:via-[#0a0705]/70 lg:via-42% lg:to-[#0a0705]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0705] via-transparent via-45% to-[#0a0705]/90" />
         
         {/* Warm Ambient Radial Glow behind Text */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full lg:w-1/2 h-full bg-radial from-[#ffca78]/12 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full lg:w-1/2 h-full bg-radial from-[#ffca78]/10 via-transparent to-transparent pointer-events-none" />
+
+        {/* Subtle & Sleek Bottom Transition into Parchment Section below (No harsh white fog line) */}
+        <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/25 to-transparent pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
         
-        {/* Right Column: Floating Editorial Headline & Copy (Positioned close to face with zero white fog) */}
+        {/* Right Column: Floating Editorial Headline & Copy (No Square Background, Face Completely Clear) */}
         <motion.div 
-          className="w-full lg:w-[58%] xl:w-[54%] lg:ml-auto flex flex-col items-start text-left"
+          className="w-full lg:w-[52%] xl:w-[48%] lg:ml-auto flex flex-col items-start text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
