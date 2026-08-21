@@ -25,25 +25,25 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-28 lg:pt-32 pb-14 bg-[#0a0705] overflow-hidden">
+    <section className="relative min-h-screen h-[100dvh] flex flex-col justify-between pt-24 lg:pt-28 pb-8 bg-[#0a0705] overflow-hidden">
       
-      {/* Full Background Photo starting cleanly below Navbar with Top Alignment (Zero Hair Cropping) */}
+      {/* Full Background Photo filling entire landing viewport below Navbar */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Raw Crisp Photo aligned to top (object-[15%_0%]) so hair sits fully visible below navbar */}
+        {/* Raw Crisp Photo (Zero Hair Cropping, fills full landing view) */}
         <img 
           src="/hero-bg.png" 
           alt="Saksham Gupta Profile" 
-          className="absolute inset-x-0 top-[90px] lg:top-[100px] w-full h-[calc(100%-90px)] lg:h-[calc(100%-100px)] object-cover object-[15%_0%] opacity-100"
+          className="absolute inset-x-0 top-[84px] lg:top-[92px] w-full h-[calc(100%-84px)] lg:h-[calc(100%-92px)] object-cover object-[15%_0%] opacity-100"
         />
         
-        {/* Soft Right Vignette behind Text Only (Leaves Face & Hair on Left 100% Crystal Clear) */}
-        <div className="absolute inset-0 top-[90px] lg:top-[100px] bg-gradient-to-r from-transparent via-[#0a0705]/35 via-45% to-[#0a0705]/85 pointer-events-none" />
+        {/* Soft Right Vignette behind Text Only */}
+        <div className="absolute inset-0 top-[84px] lg:top-[92px] bg-gradient-to-r from-transparent via-[#0a0705]/35 via-45% to-[#0a0705]/85 pointer-events-none" />
         
         {/* Top Fade below Navbar */}
-        <div className="absolute top-[90px] lg:top-[100px] inset-x-0 h-6 bg-gradient-to-b from-[#0a0705] to-transparent pointer-events-none" />
+        <div className="absolute top-[84px] lg:top-[92px] inset-x-0 h-6 bg-gradient-to-b from-[#0a0705] to-transparent pointer-events-none" />
         
-        {/* Clean Dark Bottom Transition into Next Section */}
-        <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#0a0705] to-transparent pointer-events-none" />
+        {/* Smooth Blend at the very bottom edge of Hero (Visible ONLY when scrolling down to #about) */}
+        <div className="absolute -bottom-1 inset-x-0 h-16 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/60 to-transparent pointer-events-none z-20" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
