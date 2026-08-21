@@ -145,31 +145,9 @@ export function Hero() {
         </motion.div>
 
       </div>
-
-      {/* Retro Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="flex flex-col items-center gap-1 pointer-events-none mt-2"
-      >
-        <span className="text-[10px] font-mono tracking-widest uppercase text-[#2b1a05]/60 font-semibold">
-          Scroll Down
-        </span>
-        <motion.div
-          animate={{ y: [0, 5, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border-[1.5px] border-[#2b1a05] flex justify-center pt-1 bg-[#faf7f3] shadow-[1.5px_1.5px_0_#2b1a05]"
-        >
-          <motion.div 
-            animate={{ y: [0, 6, 0], opacity: [1, 0, 1] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-1 rounded-full bg-[#2b1a05]"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
+
 
 

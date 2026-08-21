@@ -106,11 +106,6 @@ export function Skills() {
           subtitle="An interactive 3D constellation of my core frameworks and languages. Grab, drag, and spin to explore."
           centered
         />
-        <div className="text-center -mt-8 mb-4">
-          <span className="font-hand text-xl text-[#2b1a05] font-bold rotate-[-2deg] inline-block pointer-events-auto">
-            ✦ (click & drag to rotate the sphere)
-          </span>
-        </div>
       </div>
 
 
