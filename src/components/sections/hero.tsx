@@ -1,39 +1,14 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Sparkles, Code2, Globe, RotateCw } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-
-const avatarPoses = [
-  { id: 1, src: "/3d-avatar/pose-1.jpg", label: "Front (0°)" },
-  { id: 2, src: "/3d-avatar/pose-2.jpg", label: "Front-Right (60°)" },
-  { id: 3, src: "/3d-avatar/pose-3.jpg", label: "Back-Right (120°)" },
-  { id: 4, src: "/3d-avatar/pose-4.jpg", label: "Back (180°)" },
-  { id: 5, src: "/3d-avatar/pose-5.jpg", label: "Left Profile (240°)" },
-  { id: 6, src: "/3d-avatar/pose-6.jpg", label: "Action View (300°)" },
-];
+import { motion } from "framer-motion";
+import { ArrowRight, Sparkles, Code2, Globe } from "lucide-react";
+import { useState, useRef } from "react";
 
 export function Hero() {
-  const [activePoseIndex, setActivePoseIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const startXRef = useRef(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
-  const { scrollY } = useScroll();
-  
-  // Link page scroll to 360 rotation automatically
-  useEffect(() => {
-    return scrollY.on("change", (latest) => {
-      // Every 120px of scroll rotates to the next 3D angle
-      const index = Math.floor(latest / 110) % avatarPoses.length;
-      if (!isDragging) {
-        setActivePoseIndex(index);
-      }
-    });
-  }, [scrollY, isDragging]);
-
-  // Handle mouse move 3D tilt & rotation calculation
+  // Handle subtle 3D tilt on mouse move
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -43,41 +18,14 @@ export function Hero() {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateY = ((x - centerX) / centerX) * 12; // tilt max 12deg
-    const rotateX = -((y - centerY) / centerY) * 12;
+    const rotateY = ((x - centerX) / centerX) * 8; // gentle 8deg tilt
+    const rotateX = -((y - centerY) / centerY) * 8;
 
     setTilt({ x: rotateX, y: rotateY });
-
-    if (!isDragging) {
-      // Calculate hover angle column
-      const col = Math.floor((x / rect.width) * avatarPoses.length);
-      const clampedCol = Math.max(0, Math.min(avatarPoses.length - 1, col));
-      setActivePoseIndex(clampedCol);
-    }
   };
 
   const handleMouseLeave = () => {
     setTilt({ x: 0, y: 0 });
-  };
-
-  // Touch & Mouse Drag 360 degree spin logic
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    startXRef.current = e.clientX;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleDragMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    const deltaX = e.clientX - startXRef.current;
-    if (Math.abs(deltaX) > 25) {
-      const direction = deltaX > 0 ? 1 : -1;
-      setActivePoseIndex((prev) => (prev + direction + avatarPoses.length) % avatarPoses.length);
-      startXRef.current = e.clientX;
-    }
   };
 
   const containerVariants: import("framer-motion").Variants = {
@@ -106,7 +54,7 @@ export function Hero() {
         
         {/* Left Column: Editorial Headline & Copy */}
         <motion.div 
-          className="w-full lg:w-[58%] flex flex-col items-start text-left"
+          className="w-full lg:w-[54%] flex flex-col items-start text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -180,26 +128,23 @@ export function Hero() {
 
         </motion.div>
 
-        {/* Right Column: 3D 360° Interactive Polaroid Frame */}
+        {/* Right Column: Cinematic Landscape Photo Card */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95, rotate: 2 }}
-          animate={{ opacity: 1, scale: 1, rotate: -2 }}
+          initial={{ opacity: 0, scale: 0.95, rotate: 1.5 }}
+          animate={{ opacity: 1, scale: 1, rotate: -1.5 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="w-full lg:w-[42%] flex justify-center lg:justify-end relative mt-4 lg:mt-0 perspective-1000"
+          className="w-full lg:w-[46%] flex justify-center lg:justify-end relative mt-4 lg:mt-0 perspective-1000"
         >
-          {/* Polaroid 3D Interactive Card */}
+          {/* Landscape Card Container */}
           <div 
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMoveCapture={handleDragMove}
             style={{
               transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-              transition: isDragging ? "none" : "transform 0.2s ease-out",
+              transition: "transform 0.2s ease-out",
             }}
-            className="relative group p-3.5 sm:p-4 pb-6 sm:pb-7 rounded-[22px] border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[7px_7px_0_#2b1a05] hover:shadow-[10px_10px_0_#2b1a05] max-w-[280px] sm:max-w-[320px] xl:max-w-[350px] cursor-grab active:cursor-grabbing select-none"
+            className="relative group p-3.5 sm:p-4 pb-5 sm:pb-6 rounded-[22px] border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[8px_8px_0_#2b1a05] hover:shadow-[12px_12px_0_#2b1a05] hover:-translate-y-1 transition-all duration-300 w-full max-w-[460px] sm:max-w-[520px] xl:max-w-[560px] select-none"
           >
             
             {/* Washi Tape / Push Pin Sticker */}
@@ -209,57 +154,25 @@ export function Hero() {
               </span>
             </div>
 
-            {/* 360 Interactive Photo Container with Preloaded Angles */}
-            <div className="relative aspect-[4/4.7] max-h-[46vh] rounded-[14px] overflow-hidden border-[2px] border-[#2b1a05] bg-[#efe9da]">
-              {avatarPoses.map((pose, i) => (
-                <img 
-                  key={pose.id}
-                  src={pose.src} 
-                  alt={`Saksham Gupta 3D View ${pose.label}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
-                    i === activePoseIndex ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"
-                  }`}
-                />
-              ))}
-
-              {/* 360 Active Angle Badge */}
-              <div className="absolute top-2.5 left-2.5 z-20 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#2b1a05]/85 text-[#ffca78] text-[9.5px] font-mono font-bold tracking-wider uppercase backdrop-blur-xs border border-[#ffca78]/30 shadow-sm">
-                <RotateCw className="w-3 h-3 animate-spin [animation-duration:6s]" />
-                <span>360° // {avatarPoses[activePoseIndex].label}</span>
-              </div>
+            {/* Cinematic Landscape Photo Container */}
+            <div className="relative aspect-[16/9.5] rounded-[14px] overflow-hidden border-[2.5px] border-[#2b1a05] bg-[#efe9da] shadow-inner">
+              <img 
+                src="/landscape-hero.png" 
+                alt="Saksham Gupta Cinematic Workstation" 
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
             </div>
 
-            {/* Polaroid Bottom Caption & Angle Selectors */}
-            <div className="mt-3 flex flex-col gap-2.5 px-1">
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                  <span className="font-serif font-medium text-base text-[#2b1a05]">Saksham Gupta</span>
-                  <span className="text-[10px] font-mono text-[#2b1a05]/60 uppercase tracking-wider font-semibold">
-                    Product Developer • 3D Reel
-                  </span>
-                </div>
-                <div className="font-hand text-lg text-[#2b1a05] font-bold rotate-[-4deg]">
-                  Say hello! 👋
-                </div>
-              </div>
-
-              {/* Interactive Angle Dots */}
-              <div className="flex items-center justify-between pt-2 border-t border-[#2b1a05]/15">
-                <span className="text-[9px] font-mono text-[#2b1a05]/60 font-bold uppercase tracking-wider">
-                  Drag / Scroll 360°
+            {/* Bottom Caption Bar */}
+            <div className="mt-3.5 flex items-center justify-between px-1">
+              <div className="flex flex-col">
+                <span className="font-serif font-medium text-base sm:text-lg text-[#2b1a05] leading-tight">Saksham Gupta</span>
+                <span className="text-[10px] font-mono text-[#2b1a05]/60 uppercase tracking-wider font-semibold mt-0.5">
+                  Full Stack & AI Engineer
                 </span>
-                <div className="flex items-center gap-1">
-                  {avatarPoses.map((pose, idx) => (
-                    <button
-                      key={pose.id}
-                      onClick={() => setActivePoseIndex(idx)}
-                      title={`View ${pose.label}`}
-                      className={`w-2 h-2 rounded-full border border-[#2b1a05] transition-all duration-200 ${
-                        idx === activePoseIndex ? "bg-[#ffca78] scale-125 border-[#2b1a05]" : "bg-[#efe9da] hover:bg-[#ffca78]/60"
-                      }`}
-                    />
-                  ))}
-                </div>
+              </div>
+              <div className="font-hand text-base sm:text-lg text-[#2b1a05] font-bold rotate-[-3deg]">
+                Say hello! 👋
               </div>
             </div>
 
@@ -270,6 +183,7 @@ export function Hero() {
     </section>
   );
 }
+
 
 
 
