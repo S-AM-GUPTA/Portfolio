@@ -39,65 +39,72 @@ const cardVariants: any = {
 export function About() {
   const stats = [
     {
-      icon: <Code2 className="w-6 h-6 text-[var(--color-deep-teal)]" />,
+      icon: <Code2 className="w-6 h-6 text-[#2b1a05]" />,
       value: "3+",
-      label: "Years Learning",
-      description: "Continuous exploration of web and AI.",
-      bgColor: "bg-[var(--color-card-mint)]"
+      label: "Years Engineering",
+      description: "Hands-on experience developing web apps & AI systems.",
+      bgColor: "bg-[#ffca78]",
+      rotate: "rotate-[-1deg]",
     },
     {
-      icon: <Rocket className="w-6 h-6 text-[var(--color-deep-teal)]" />,
+      icon: <Rocket className="w-6 h-6 text-[#2b1a05]" />,
       value: "3",
-      label: "Major Projects",
-      description: "From concept to scalable deployment.",
-      bgColor: "bg-[var(--color-sea-foam)]"
+      label: "Featured Products",
+      description: "From concept to production-grade deployments.",
+      bgColor: "bg-[#cbb8d9]",
+      rotate: "rotate-[1deg]",
     },
     {
-      icon: <BrainCircuit className="w-6 h-6 text-[var(--color-deep-teal)]" />,
+      icon: <BrainCircuit className="w-6 h-6 text-[#2b1a05]" />,
       value: "AI",
-      label: "Solutions",
-      description: "Integrating intelligent capabilities.",
-      bgColor: "bg-[var(--color-blush-sand)]"
+      label: "Driven Architectures",
+      description: "LLMs, vector search, and intelligent workflows.",
+      bgColor: "bg-[#efe9da]",
+      rotate: "rotate-[-1deg]",
     },
     {
-      icon: <Users className="w-6 h-6 text-[var(--color-deep-teal)]" />,
-      value: "Startup",
-      label: "Oriented",
-      description: "Building for real-world user impact.",
-      bgColor: "bg-[var(--color-card-mint)]"
+      icon: <Users className="w-6 h-6 text-[#2b1a05]" />,
+      value: "8.01",
+      label: "CGPA • ABESIT",
+      description: "Computer Science & Engineering (Data Science).",
+      bgColor: "bg-[#e8d9b0]",
+      rotate: "rotate-[1.5deg]",
     },
   ];
 
   return (
-    <section id="about" className="py-20 relative z-10 bg-transparent">
+    <section id="about" className="py-24 relative z-10 bg-transparent">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading
-          title="Who I Am"
+          tag="Background & Philosophy"
+          title="Who I Am & What Drives Me"
+          subtitle="Merging engineering rigor with intuitive user experiences to ship meaningful digital products."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
+          {/* Bio Box */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={containerVariants}
-            className="space-y-6 text-[18px] text-[var(--color-charcoal-navy)] opacity-90 leading-[1.6] font-[400]"
+            className="space-y-6 text-base sm:text-lg text-[#2b1a05]/85 leading-relaxed font-normal p-8 rounded-2xl border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[8px_8px_0_#2b1a05]"
           >
             <motion.p variants={textVariants}>
-              I am a final year <span className="text-[var(--color-ink-navy)] font-[500]">B.Tech CSE (Data Science)</span> student at ABES Institute of Technology (CGPA: 8.01), driven by a passion for building impactful technology.
-              My interests lie at the intersection of <span className="text-[var(--color-ink-navy)] font-[500]">full-stack software engineering, artificial intelligence, product design, and entrepreneurship.</span>
+              I am a final-year <span className="font-semibold text-[#2b1a05] underline decoration-[#ffca78] decoration-2 underline-offset-4">B.Tech CSE (Data Science)</span> student at ABESIT, passionate about building products that live at the intersection of full-stack engineering, artificial intelligence, and clean UX design.
             </motion.p>
             <motion.p variants={textVariants}>
-              I enjoy transforming ideas into scalable digital products that solve real-world challenges. It's not just about writing code; it's about engineering solutions that make a difference using the MERN stack and modern tools.
+              I treat every project not just as a set of code routines, but as a holistic digital product. From architecture and databases to frontend micro-interactions, I focus on building software that users genuinely love to interact with.
             </motion.p>
-            <motion.p variants={textVariants}>
-              Whether it's building AI-powered healthcare solutions, hyperlocal commerce platforms, or community-driven marketplaces, I focus on creating technology that genuinely improves lives.
+            <motion.p variants={textVariants} className="font-hand text-2xl text-[#2b1a05] font-bold">
+              ✦ "Good software isn't just functional — it feels effortless."
             </motion.p>
           </motion.div>
 
+          {/* Bento Stat Cards */}
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-5"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -107,17 +114,22 @@ export function About() {
               <motion.div
                 key={stat.label}
                 variants={cardVariants}
-                whileHover={{ y: -8, transition: { duration: 0.4, ease: "easeOut" } }}
+                className={`${stat.rotate} transition-transform duration-300 hover:rotate-0 hover:scale-[1.02]`}
               >
-                <div className={`h-full rounded-[12px] p-8 ${stat.bgColor} flex flex-col shadow-sm hover:shadow-2xl hover:shadow-[var(--color-deep-teal)]/20 transition-shadow duration-500`}>
-                  <div className="mb-4 inline-block">
-                    {stat.icon}
+                <div className={`h-full rounded-2xl p-6 ${stat.bgColor} border-[2.5px] border-[#2b1a05] shadow-[5px_5px_0_#2b1a05] flex flex-col justify-between`}>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-2 rounded-lg border border-[#2b1a05]/30 bg-white/50">
+                      {stat.icon}
+                    </div>
+                    <span className="font-mono text-xs text-[#2b1a05]/60 uppercase tracking-widest font-semibold">✦ INFO</span>
                   </div>
-                  <h3 className="text-[32px] font-[400] font-serif text-[var(--color-charcoal-navy)] mb-1 leading-none">{stat.value}</h3>
-                  <div className="text-[12px] font-mono tracking-widest uppercase text-[var(--color-deep-teal)] mb-3 mt-2">
-                    {stat.label}
+                  <div>
+                    <h3 className="text-4xl font-serif text-[#2b1a05] mb-1 leading-none font-medium">{stat.value}</h3>
+                    <div className="text-xs font-mono tracking-wider uppercase text-[#2b1a05] font-bold mb-2 mt-1">
+                      {stat.label}
+                    </div>
+                    <p className="text-xs text-[#2b1a05]/80 leading-relaxed">{stat.description}</p>
                   </div>
-                  <p className="text-[14px] text-[var(--color-charcoal-navy)] opacity-80 leading-[1.5]">{stat.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -128,3 +140,4 @@ export function About() {
     </section>
   );
 }
+

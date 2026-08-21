@@ -1,28 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors */
-  --color-deep-teal: #cb997e;
-  --color-pine-shadow: #6b705c;
-  --color-sage: #cb997e;
-  --color-lake-teal: #a5a58d;
-  --color-forest-floor: #6b705c;
-  --color-ink-navy: #3f4335;
-  --color-dusty-rose: #cb997e;
-  --color-mint-mist: #ddbea9;
-  --color-sea-foam: #b7b7a4;
-  --color-paper-white: #ffffff;
-  --color-card-mint: #ddbea9;
-  --color-blush-sand: #b7b7a4;
-  --color-charcoal-navy: #000000;
-  --color-slate: #1a1a1a;
-  --color-soft-black: #000000;
-  --color-illustration-ink: #000000;
+  /* Kunal Rajelli Warm Editorial Color Palette */
+  --color-espresso: #2b1a05;
+  --color-gold: #ffca78;
+  --color-cream: #faf7f3;
+  --color-sand: #efe9da;
+  --color-lilac: #cbb8d9;
+  --color-amber-gold: #ffe3b0;
+
+  /* Legacy aliases for compatibility */
+  --color-deep-teal: #2b1a05;
+  --color-pine-shadow: #4a3416;
+  --color-sage: #c9a876;
+  --color-lake-teal: #7b6690;
+  --color-forest-floor: #2b1a05;
+  --color-ink-navy: #2b1a05;
+  --color-dusty-rose: #ffca78;
+  --color-mint-mist: #efe9da;
+  --color-sea-foam: #cbb8d9;
+  --color-paper-white: #faf7f3;
+  --color-card-mint: #ffca78;
+  --color-blush-sand: #efe9da;
+  --color-charcoal-navy: #2b1a05;
+  --color-slate: #2b1a05;
+  --color-soft-black: #2b1a05;
+  --color-illustration-ink: #2b1a05;
 
   /* Typography */
-  --font-serif: var(--font-p22-mackinac-pro), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: var(--font-sofia-pro), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: var(--font-display), "Playfair Display", Georgia, serif;
+  --font-display: var(--font-display), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+  --font-hand: var(--font-hand), "Caveat", cursive;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Spacing */
   --spacing-8: 8px;

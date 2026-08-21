@@ -53,39 +53,45 @@ export function GithubSection() {
   }, []);
 
   const stats = [
-    { icon: <GitCommit className="w-5 h-5 text-green-400" />, label: "Yearly Contributions", value: "54" },
-    { icon: <Star className="w-5 h-5 text-yellow-400" />, label: "Stars Earned", value: githubData.stars },
-    { icon: <GitPullRequest className="w-5 h-5 text-purple-400" />, label: "Pull Requests", value: githubData.prs },
-    { icon: <GitMerge className="w-5 h-5 text-blue-400" />, label: "Repositories", value: githubData.repos },
+    { icon: <GitCommit className="w-4 h-4 text-[#2b1a05]" />, label: "Contributions", value: "54+" },
+    { icon: <Star className="w-4 h-4 text-[#2b1a05]" />, label: "Stars Earned", value: githubData.stars },
+    { icon: <GitPullRequest className="w-4 h-4 text-[#2b1a05]" />, label: "Pull Requests", value: githubData.prs },
+    { icon: <GitMerge className="w-4 h-4 text-[#2b1a05]" />, label: "Repositories", value: githubData.repos },
   ];
 
   return (
-    <section id="github" className="py-12 md:py-24 relative z-10">
+    <section id="github" className="py-24 relative z-10 bg-transparent">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
-          title="Open Source Activity" 
-          subtitle="A visualization of my coding consistency and contributions."
+          tag="Open Source & Craft"
+          title="Engineering Consistency" 
+          subtitle="A live summary of my repositories, commits, and open-source contributions."
         />
 
-        <div className="bg-secondary-100/50 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="bg-[#faf7f3] border-[3px] border-[#2b1a05] rounded-3xl p-8 md:p-10 shadow-[8px_8px_0_#2b1a05]">
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6 pb-6 border-b border-[#2b1a05]/15">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-secondary-200 border border-white/10 flex items-center justify-center overflow-hidden">
-                 <img src="https://github.com/S-AM-GUPTA.png" alt="GitHub Avatar" className="w-full h-full object-cover opacity-80" />
+              <div className="w-14 h-14 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] flex items-center justify-center overflow-hidden shadow-[2px_2px_0_#2b1a05]">
+                 <img src="https://github.com/S-AM-GUPTA.png" alt="GitHub Avatar" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground">@S-AM-GUPTA</h3>
-                <p className="text-muted">Software Developer</p>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-[#2b1a05]">@S-AM-GUPTA</h3>
+                <p className="text-xs font-mono text-[#2b1a05]/70 uppercase tracking-wider font-semibold">Full Stack & AI Engineer</p>
               </div>
             </div>
 
-            <a href="https://github.com/S-AM-GUPTA" target="_blank" rel="noopener noreferrer" className="px-6 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium hover:bg-white/10 transition-colors">
-              Follow on GitHub
+            <a 
+              href="https://github.com/S-AM-GUPTA" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-5 py-2.5 rounded-full bg-[#2b1a05] text-[#ffca78] hover:bg-[#ffca78] hover:text-[#2b1a05] border-[2px] border-[#2b1a05] text-xs font-mono font-bold uppercase tracking-wider shadow-[2px_2px_0_#ffca78] hover:shadow-[4px_4px_0_#2b1a05] hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Follow on GitHub ✦
             </a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {stats.map((stat, i) => (
               <motion.div 
                 key={stat.label}
@@ -93,30 +99,30 @@ export function GithubSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-secondary-200/50 rounded-2xl p-4 border border-white/5 flex flex-col gap-2"
+                className="bg-[#efe9da] rounded-2xl p-4 border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#2b1a05] flex flex-col gap-1.5"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#2b1a05]/70 font-semibold uppercase">
                   {stat.icon}
-                  <span className="text-muted text-sm font-medium">{stat.label}</span>
+                  <span>{stat.label}</span>
                 </div>
-                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-2xl sm:text-3xl font-serif font-medium text-[#2b1a05]">{stat.value}</div>
               </motion.div>
             ))}
           </div>
 
-          {/* Real GitHub Contribution Heatmap */}
-          <div className="overflow-x-auto pb-4 custom-scrollbar flex justify-center w-full">
-            <div className="min-w-fit h-[150px] flex items-center justify-center">
+          {/* GitHub Contribution Heatmap */}
+          <div className="overflow-x-auto pb-4 custom-scrollbar flex justify-center w-full bg-[#efe9da]/50 border border-[#2b1a05]/15 rounded-2xl p-4">
+            <div className="min-w-fit flex items-center justify-center">
               {mounted ? (
                 <GitHubCalendar 
                   username="S-AM-GUPTA" 
-                  colorScheme="dark" 
+                  colorScheme="light" 
                   blockSize={12}
                   blockMargin={4}
                   fontSize={12}
                 />
               ) : (
-                <div className="text-muted/50 text-sm">Loading contributions...</div>
+                <div className="text-xs font-mono text-[#2b1a05]/50">Loading activity...</div>
               )}
             </div>
           </div>
@@ -126,3 +132,4 @@ export function GithubSection() {
     </section>
   );
 }
+

@@ -13,19 +13,20 @@ const journeySteps = [
 
 export function Journey() {
   return (
-    <section id="journey" className="py-20 relative z-10 bg-transparent">
+    <section id="journey" className="py-24 relative z-10 bg-transparent">
       <div className="container mx-auto px-6 md:px-12">
         <SectionHeading 
-          title="The Journey" 
-          subtitle="My path of continuous growth and technical evolution."
+          tag="Timeline & Evolution"
+          title="The Learning Journey" 
+          subtitle="A continuous path of engineering, experimentation, and product building."
           centered
         />
 
         <div className="relative mt-16 max-w-4xl mx-auto">
           {/* Vertical Connecting Line */}
-          <div className="absolute top-0 bottom-0 left-4 md:left-1/2 w-[2px] bg-[var(--color-sea-foam)] -translate-x-1/2" />
+          <div className="absolute top-0 bottom-0 left-4 md:left-1/2 w-[3px] bg-[#2b1a05]/20 -translate-x-1/2" />
           
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col gap-10">
             {journeySteps.map((step, i) => (
               <motion.div
                 key={step.year}
@@ -36,21 +37,23 @@ export function Journey() {
                 className={`relative flex flex-col md:flex-row items-center group ${i % 2 === 0 ? "md:flex-row-reverse" : ""}`}
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-4 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[var(--color-deep-teal)] border-4 border-[var(--color-paper-white)] z-10 group-hover:scale-125 transition-transform duration-300" />
+                <div className="absolute left-4 md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#ffca78] border-[2.5px] border-[#2b1a05] shadow-[2px_2px_0_#2b1a05] z-10 group-hover:scale-125 transition-transform duration-300 flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#2b1a05]" />
+                </div>
                 
                 {/* Space for the opposite side */}
                 <div className="hidden md:block w-1/2" />
                 
                 {/* Card Container */}
-                <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:pr-12 text-right" : "md:pl-12 text-left"}`}>
-                  <div className="bg-[var(--color-card-mint)] rounded-[12px] p-6 hover:bg-[var(--color-sea-foam)] transition-colors inline-block w-full">
-                    <div className="text-[32px] font-[400] font-serif text-[var(--color-deep-teal)] mb-2 leading-none">
+                <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:pr-10 text-right" : "md:pl-10 text-left"}`}>
+                  <div className="bg-[#faf7f3] border-[2.5px] border-[#2b1a05] shadow-[5px_5px_0_#2b1a05] rounded-2xl p-6 hover:bg-[#ffca78]/30 transition-all duration-300 inline-block w-full">
+                    <div className="text-3xl font-serif text-[#2b1a05] mb-1 font-medium leading-none">
                       {step.year}
                     </div>
-                    <h3 className="text-[18px] font-[500] font-sans text-[var(--color-charcoal-navy)] mb-2">
+                    <h3 className="text-base font-serif font-bold text-[#2b1a05] mb-1.5">
                       {step.title}
                     </h3>
-                    <p className="text-[14px] text-[var(--color-charcoal-navy)] opacity-80 leading-[1.6]">
+                    <p className="text-xs sm:text-sm text-[#2b1a05]/80 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -63,3 +66,4 @@ export function Journey() {
     </section>
   );
 }
+

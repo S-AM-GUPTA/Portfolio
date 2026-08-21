@@ -72,22 +72,23 @@ export function Projects() {
           {/* Section Introduction Column */}
           <div className="shrink-0 w-[clamp(260px,34vw,400px)] pr-[clamp(12px,2vw,28px)] flex flex-col justify-center">
             <div className="inline-flex items-center gap-2 mb-3">
-              <span className="text-[11px] font-mono tracking-widest uppercase text-[var(--color-ink-navy)] bg-[var(--color-card-mint)] px-3 py-1 rounded-full font-medium">
-                Portfolio
+              <span className="text-[11px] font-mono tracking-widest uppercase text-[#2b1a05] bg-[#ffca78] border border-[#2b1a05]/30 px-3 py-1 rounded-full font-semibold shadow-[2px_2px_0_#2b1a05]">
+                ✦ Portfolio Works
               </span>
             </div>
             
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif font-medium text-[var(--color-charcoal-navy)] leading-[1.05] tracking-tight mb-4">
-              Selected <br />Works.
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#2b1a05] leading-[1.05] tracking-tight mb-4">
+              Featured <br />
+              <span className="italic font-normal underline decoration-[#ffca78] decoration-4 underline-offset-6">Products.</span>
             </h2>
             
-            <p className="text-sm sm:text-base text-[var(--color-charcoal-navy)] opacity-80 leading-relaxed max-w-[360px] mb-6 font-normal">
-              A curated collection of my full-stack and AI-driven applications, designed for real-world usability and clean scalable architecture.
+            <p className="text-sm sm:text-base text-[#2b1a05]/80 leading-relaxed max-w-[360px] mb-6 font-normal">
+              A curated collection of full-stack web applications and AI systems engineered for real-world reliability and intuitive interaction.
             </p>
 
-            <div className="inline-flex items-center gap-2.5 text-xs font-mono text-[var(--color-ink-navy)] opacity-60">
-              <span className="animate-pulse">Scroll to explore</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2.5 text-xs font-mono text-[#2b1a05] font-semibold">
+              <span className="animate-pulse font-hand text-lg">✦ scroll to slide</span>
+              <ArrowRight className="w-4 h-4" />
             </div>
           </div>
 
@@ -95,42 +96,41 @@ export function Projects() {
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="w-[74vw] sm:w-[65vw] max-w-[680px] shrink-0 relative group"
+              className="w-[74vw] sm:w-[65vw] max-w-[660px] shrink-0 relative group"
             >
-              <div className="flex flex-col gap-4">
+              <div className="p-5 sm:p-7 rounded-2xl border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[8px_8px_0_#2b1a05] transition-all duration-300 group-hover:shadow-[12px_12px_0_#2b1a05] group-hover:-translate-y-1 flex flex-col gap-4">
                 
                 {/* Sleek Image Mockup Frame */}
                 <div 
-                  className="w-full aspect-[16/10] max-h-[46vh] rounded-[18px] overflow-hidden relative flex items-center justify-center p-5 sm:p-7 border border-black/10 shadow-lg shadow-black/5 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[var(--color-deep-teal)]/15"
-                  style={{ background: project.gradient }}
+                  className="w-full aspect-[16/10] max-h-[38vh] rounded-xl overflow-hidden relative flex items-center justify-center p-4 sm:p-6 border-[2.5px] border-[#2b1a05] shadow-inner bg-gradient-to-br from-[#ffe3b0] via-[#faf7f3] to-[#efe9da]"
                 >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="max-w-full max-h-full object-contain rounded-[10px] shadow-xl transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
+                    className="max-w-full max-h-full object-contain rounded-[8px] shadow-lg border border-[#2b1a05]/20 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-105"
                   />
                 </div>
 
                 {/* Card Information */}
-                <div className="flex flex-col gap-3 px-1">
+                <div className="flex flex-col gap-3">
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex flex-col">
-                      <span className="text-[11px] font-mono text-[var(--color-deep-teal)] uppercase tracking-wider font-semibold">
-                        0{index + 1} — {project.subtitle}
+                      <span className="text-[11px] font-mono text-[#2b1a05]/60 uppercase tracking-widest font-bold">
+                        0{index + 1} // {project.subtitle}
                       </span>
-                      <h3 className="text-2xl sm:text-3xl font-serif font-medium text-[var(--color-charcoal-navy)] tracking-tight mt-0.5">
+                      <h3 className="text-2xl sm:text-3xl font-serif text-[#2b1a05] tracking-tight mt-0.5 font-medium">
                         {project.title}
                       </h3>
                     </div>
 
                     {/* Action Links */}
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-2.5 shrink-0">
                       {project.code && (
                         <a 
                           href={project.code} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--color-card-mint)]/40 hover:bg-[var(--color-card-mint)] text-[var(--color-charcoal-navy)] text-xs font-mono font-medium transition-all hover:scale-105 active:scale-95 border border-black/5"
+                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#efe9da] hover:bg-[#ffca78] text-[#2b1a05] text-xs font-mono font-bold uppercase tracking-wider transition-all hover:scale-105 active:scale-95 border-[2px] border-[#2b1a05] shadow-[2px_2px_0_#2b1a05]"
                           aria-label="View Source Code"
                         >
                           <GithubIcon />
@@ -142,27 +142,27 @@ export function Projects() {
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[var(--color-deep-teal)] text-white text-xs font-mono font-medium hover:bg-[var(--color-forest-floor)] shadow-sm shadow-[var(--color-deep-teal)]/20 transition-all hover:scale-105 active:scale-95"
+                          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#2b1a05] text-[#ffca78] hover:bg-[#ffca78] hover:text-[#2b1a05] text-xs font-mono font-bold uppercase tracking-wider border-[2px] border-[#2b1a05] shadow-[2px_2px_0_#ffca78] transition-all hover:scale-105 active:scale-95"
                           aria-label="Visit Live Demo"
                         >
-                          <span>Live Demo</span>
+                          <span>Demo</span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>
                       )}
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[var(--color-charcoal-navy)] opacity-75 leading-relaxed font-normal line-clamp-2 sm:line-clamp-3">
+                  <p className="text-xs sm:text-sm text-[#2b1a05]/80 leading-relaxed font-normal line-clamp-2">
                     {project.description}
                   </p>
 
                   {/* Highlights and Tags */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-black/5">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#2b1a05]/10">
                     <div className="flex flex-wrap gap-1.5">
                       {project.features.map((feature) => (
                         <span 
                           key={feature} 
-                          className="text-[10px] font-medium text-[var(--color-ink-navy)] bg-black/5 px-2 py-0.5 rounded"
+                          className="text-[10px] font-mono font-semibold text-[#2b1a05] bg-[#efe9da] border border-[#2b1a05]/20 px-2.5 py-0.5 rounded-md"
                         >
                           {feature}
                         </span>
@@ -173,7 +173,7 @@ export function Projects() {
                       {project.tags.map((tag) => (
                         <span 
                           key={tag} 
-                          className="text-[10px] font-mono text-[var(--color-deep-teal)] font-semibold"
+                          className="text-[11px] font-mono text-[#2b1a05]/70 font-semibold"
                         >
                           #{tag}
                         </span>
@@ -191,4 +191,5 @@ export function Projects() {
     </section>
   );
 }
+
 

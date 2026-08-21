@@ -20,10 +20,11 @@ export function MouseEffect() {
 
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+      className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-500"
       animate={{
-        background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.05), transparent 40%)`,
+        background: `radial-gradient(700px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 202, 120, 0.12), rgba(203, 184, 217, 0.05) 35%, transparent 65%)`,
       }}
     />
   );
 }
+

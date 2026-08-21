@@ -86,8 +86,8 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
         <img src={skill.image} alt={skill.name} className="w-full h-full object-contain drop-shadow-2xl relative z-10" />
         
         {/* Tooltip */}
-        <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-[var(--color-charcoal-navy)] text-white text-[12px] font-[500] rounded-[8px] whitespace-nowrap transition-opacity duration-300 pointer-events-none ${hovered ? 'opacity-100' : 'opacity-0'}`}>
-          {skill.name}
+        <div className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1 bg-[#2b1a05] border border-[#ffca78]/40 text-[#ffca78] text-[11px] font-mono font-bold rounded-full whitespace-nowrap transition-opacity duration-300 pointer-events-none shadow-[2px_2px_0_#2b1a05] ${hovered ? 'opacity-100' : 'opacity-0'}`}>
+          ✦ {skill.name}
         </div>
       </div>
     </Html>
@@ -101,11 +101,18 @@ export function Skills() {
       {/* Title placed statically over the 3D canvas */}
       <div className="container mx-auto px-6 md:px-12 relative z-20 pointer-events-none mb-0">
         <SectionHeading 
+          tag="Tech Stack & Tools"
           title="Technical Arsenal" 
-          subtitle="An interactive 3D constellation of my technological proficiency. Grab and spin to explore."
+          subtitle="An interactive 3D constellation of my core frameworks and languages. Grab, drag, and spin to explore."
           centered
         />
+        <div className="text-center -mt-8 mb-4">
+          <span className="font-hand text-xl text-[#2b1a05] font-bold rotate-[-2deg] inline-block pointer-events-auto">
+            ✦ (click & drag to rotate the sphere)
+          </span>
+        </div>
       </div>
+
 
       {/* The 3D Interactive Canvas */}
       <div className="relative w-full h-[450px] lg:h-[600px] z-10 pointer-events-none md:pointer-events-auto md:cursor-grab md:active:cursor-grabbing -mt-12">

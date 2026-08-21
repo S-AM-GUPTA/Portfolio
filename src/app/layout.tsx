@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
-import { Lora, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Playfair_Display, Inter, Caveat, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const lora = Lora({
-  variable: "--font-p22-mackinac-pro",
+const playfair = Playfair_Display({
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-sofia-pro",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const caveat = Caveat({
+  variable: "--font-hand",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
 });
@@ -34,9 +40,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${lora.variable} ${dmSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${caveat.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
+

@@ -20,7 +20,7 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -34,45 +34,47 @@ export function Navigation() {
       className={cn(
         "fixed top-0 inset-x-0 z-50 transition-all duration-300",
         scrolled 
-          ? "bg-[var(--color-paper-white)]/95 backdrop-blur-md border-b border-[var(--color-card-mint)] py-4" 
-          : "bg-transparent py-6",
-        isOpen ? "bg-[var(--color-paper-white)]" : ""
+          ? "bg-[#faf7f3]/90 backdrop-blur-md border-b-[2.5px] border-[#2b1a05] py-3.5 shadow-sm" 
+          : "bg-transparent py-5",
+        isOpen ? "bg-[#faf7f3]" : ""
       )}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold tracking-tighter text-[var(--color-charcoal-navy)] flex items-center gap-3 relative z-50">
-          {/* Logo can be left as is, but we might want to invert it if it's a white PNG */}
-          <img src="/logo.png" alt="Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain filter brightness-0" />
-          <span>Saksham Gupta</span>
+        <a href="#" className="text-xl font-serif font-bold tracking-tight text-[#2b1a05] flex items-center gap-3 relative z-50 group">
+          <div className="w-10 h-10 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] flex items-center justify-center shadow-[2px_2px_0_#2b1a05] overflow-hidden group-hover:rotate-12 transition-transform">
+            <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain filter brightness-0" />
+          </div>
+          <span className="font-serif italic font-medium">Saksham Gupta</span>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-2 bg-[#efe9da]/80 border-[2px] border-[#2b1a05]/20 rounded-full p-1.5 backdrop-blur-sm shadow-[2px_2px_0_rgba(43,26,5,0.08)]">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-[14px] font-[400] text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors rounded-full px-4 py-2 hover:bg-[var(--color-card-mint)]"
+              className="text-xs font-mono font-medium tracking-wider uppercase text-[#2b1a05] hover:text-[#2b1a05] hover:bg-[#ffca78] transition-all rounded-full px-4 py-2 border border-transparent hover:border-[#2b1a05]/30"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
-        {/* Sign Up / Let's Talk CTA */}
+        {/* Get in Touch CTA */}
         <a 
           href="#contact"
-          className="hidden md:inline-flex px-6 py-2.5 rounded-[48px] text-[14px] font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors relative z-50"
+          className="hidden md:inline-flex items-center gap-2 px-6 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#2b1a05] hover:bg-[#ffca78] text-[#ffca78] hover:text-[#2b1a05] border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#2b1a05] hover:shadow-[5px_5px_0_#2b1a05] hover:-translate-y-0.5 transition-all duration-200 relative z-50"
         >
-          Hire Me
+          <span>Get in Touch</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
         </a>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-[var(--color-charcoal-navy)] relative z-50"
+          className="md:hidden p-2 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] text-[#2b1a05] shadow-[2px_2px_0_#2b1a05] relative z-50"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
@@ -81,14 +83,14 @@ export function Navigation() {
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 w-full bg-[var(--color-paper-white)] border-b border-[var(--color-card-mint)] py-6 px-6 flex flex-col gap-6 md:hidden shadow-lg"
+          className="absolute top-full left-0 w-full bg-[#faf7f3] border-b-[2.5px] border-[#2b1a05] py-6 px-6 flex flex-col gap-4 md:hidden shadow-xl"
         >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="text-lg font-[500] text-[var(--color-charcoal-navy)] hover:text-[var(--color-deep-teal)] transition-colors"
+              className="text-sm font-mono uppercase tracking-widest font-semibold text-[#2b1a05] hover:bg-[#ffca78] p-3 rounded-xl border border-[#2b1a05]/10 transition-colors"
             >
               {item.name}
             </a>
@@ -96,12 +98,13 @@ export function Navigation() {
           <a 
             href="#contact"
             onClick={() => setIsOpen(false)}
-            className="inline-block text-center w-full px-5 py-3 mt-4 rounded-[48px] text-base font-[500] bg-[var(--color-deep-teal)] hover:bg-[var(--color-forest-floor)] text-white transition-colors"
+            className="inline-block text-center w-full px-5 py-3 mt-2 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[#2b1a05] text-[#ffca78] border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#2b1a05]"
           >
-            Hire Me
+            Get in Touch
           </a>
         </motion.div>
       )}
     </motion.header>
   );
 }
+
