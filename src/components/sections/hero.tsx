@@ -27,52 +27,48 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-28 lg:pt-32 pb-14 bg-[#0a0705] overflow-hidden">
       
-      {/* Background Profile Photo (Full Widescreen 16:9 Framed directly below Navbar) */}
+      {/* 100% Full-Screen Widescreen Background Photo starting directly below Navbar */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Exact Face Photo - Starts directly below the navigation bar (top-[88px] lg:top-[96px]) */}
         <img 
           src="/hero-bg.png" 
           alt="Saksham Gupta Profile" 
-          className="absolute left-0 top-[84px] lg:top-[92px] w-full sm:w-[85%] lg:w-[60%] xl:w-[56%] h-[calc(100%-84px)] lg:h-[calc(100%-92px)] object-contain object-left-top filter brightness-105 contrast-105"
+          className="absolute inset-x-0 top-[80px] lg:top-[88px] w-full h-[calc(100%-80px)] lg:h-[calc(100%-88px)] object-cover object-[20%_center] opacity-95 filter brightness-105 contrast-105"
         />
         
-        {/* Gradient Blend Overlays: Fades photo smoothly into deep espresso on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0a0705]/20 via-35% to-[#0a0705] lg:from-transparent lg:via-[#0a0705]/60 lg:via-40% lg:to-[#0a0705]" />
+        {/* Full-Screen Dark Overlay for Text Legibility & Contrast */}
+        <div className="absolute inset-0 top-[80px] lg:top-[88px] bg-gradient-to-r from-[#0a0705]/85 via-[#0a0705]/60 to-[#0a0705]/85 lg:from-[#0a0705]/60 lg:via-[#0a0705]/50 lg:to-[#0a0705]/85" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0705] via-transparent via-50% to-[#0a0705]" />
         
-        {/* Warm Ambient Radial Glow behind Text */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full lg:w-1/2 h-full bg-radial from-[#ffca78]/10 via-transparent to-transparent pointer-events-none" />
-
-        {/* Subtle & Sleek Bottom Transition into Parchment Section below */}
-        <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/20 to-transparent pointer-events-none" />
+        {/* Subtle Bottom Fade into Parchment Section */}
+        <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/30 to-transparent pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
         
-        {/* Right Column: Floating Editorial Headline & Copy (No Square Background, Face Completely Clear) */}
+        {/* Floating Editorial Text Column directly on top of Full-Screen Image */}
         <motion.div 
-          className="w-full lg:w-[52%] xl:w-[48%] lg:ml-auto flex flex-col items-start text-left"
+          className="w-full lg:w-[56%] xl:w-[52%] lg:ml-auto flex flex-col items-start text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Status Badge with Hand-drawn Aesthetic */}
+          {/* Status Badge */}
           <motion.div variants={itemVariants} className="mb-4 flex flex-wrap items-center gap-2.5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] text-[#2b1a05] shadow-[2.5px_2.5px_0_#2b1a05] text-xs font-mono font-bold tracking-wide">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] text-[#2b1a05] shadow-[3px_3px_0_#2b1a05] text-xs font-mono font-bold tracking-wide">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-ping" />
               <span>Full-Stack Developer & AI Builder</span>
             </div>
             
             {/* Handwritten cursive note */}
-            <span className="font-hand text-base md:text-lg text-[#ffca78] rotate-[-2deg] font-bold">
+            <span className="font-hand text-base md:text-lg text-[#ffca78] rotate-[-2deg] font-bold drop-shadow-md">
               ✦ crafting clean, scalable systems
             </span>
           </motion.div>
 
-          {/* Headline in Playfair Display with Italic Accents */}
+          {/* Main Headline */}
           <motion.h1 
             variants={itemVariants} 
-            className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-serif text-[#faf7f3] leading-[1.12] tracking-tight mb-5 font-medium drop-shadow-md"
+            className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-serif text-[#faf7f3] leading-[1.12] tracking-tight mb-5 font-medium drop-shadow-lg"
           >
             Turning <span className="italic font-serif font-normal text-[#ffca78] underline decoration-[#ffca78] decoration-4 underline-offset-8">complex ideas</span> into <span className="italic font-serif font-normal text-[#faf7f3]">scalable digital products.</span>
           </motion.h1>
@@ -80,12 +76,12 @@ export function Hero() {
           {/* Subtitle / Intro */}
           <motion.p 
             variants={itemVariants} 
-            className="text-base sm:text-lg text-[#faf7f3]/90 max-w-[540px] mb-7 md:mb-9 leading-relaxed font-normal drop-shadow-xs"
+            className="text-base sm:text-lg text-[#faf7f3]/95 max-w-[560px] mb-7 md:mb-9 leading-relaxed font-normal drop-shadow-md"
           >
             Hi, I’m <span className="font-semibold text-[#ffca78]">Saksham Gupta</span>. I blend strategic system architecture, AI integration, and sleek modern UI engineering to build products that solve real-world problems.
           </motion.p>
 
-          {/* Action CTAs with Neobrutalist Shadow */}
+          {/* Action CTAs */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4">
             <a 
               href="#projects"
@@ -99,14 +95,14 @@ export function Hero() {
               href="/resume.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border-[2.5px] border-[#faf7f3]/40 bg-[#faf7f3]/10 backdrop-blur-xs text-[#faf7f3] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-[3.5px_3.5px_0_rgba(0,0,0,0.5)] hover:border-[#ffca78] hover:text-[#ffca78] hover:bg-[#faf7f3]/20 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border-[2.5px] border-[#faf7f3]/50 bg-[#0a0705]/40 backdrop-blur-xs text-[#faf7f3] text-xs sm:text-sm font-mono font-bold uppercase tracking-wider shadow-[3.5px_3.5px_0_rgba(0,0,0,0.6)] hover:border-[#ffca78] hover:text-[#ffca78] hover:bg-[#0a0705]/60 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all duration-200"
             >
               <span>Resume PDF</span>
             </a>
           </motion.div>
 
           {/* Feature Micro-Badges */}
-          <motion.div variants={itemVariants} className="mt-8 pt-5 border-t border-[#faf7f3]/20 flex flex-wrap items-center gap-3 text-xs font-mono text-[#faf7f3]/80 font-medium">
+          <motion.div variants={itemVariants} className="mt-8 pt-5 border-t border-[#faf7f3]/25 flex flex-wrap items-center gap-3 text-xs font-mono text-[#faf7f3]/90 font-medium drop-shadow-sm">
             <div className="flex items-center gap-1.5">
               <Code2 className="w-3.5 h-3.5 text-[#ffca78]" />
               <span>Full-Stack Architecture</span>
@@ -129,6 +125,7 @@ export function Hero() {
     </section>
   );
 }
+
 
 
 
