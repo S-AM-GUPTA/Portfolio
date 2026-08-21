@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -95,6 +95,12 @@ function SkillLogo({ skill, position }: { skill: typeof skillsList[0], position:
 }
 
 export function Skills() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section id="skills" className="py-16 md:py-20 relative z-10 bg-transparent flex flex-col items-center justify-center overflow-hidden">
       
@@ -110,18 +116,23 @@ export function Skills() {
 
 
       {/* The 3D Interactive Canvas */}
-      <div className="relative w-full h-[450px] lg:h-[600px] z-10 pointer-events-none md:pointer-events-auto md:cursor-grab md:active:cursor-grabbing -mt-12">
-        <Canvas camera={{ position: [0, 0, 16], fov: 50 }}>
-          <ambientLight intensity={0.5} />
-          <SkillCloud />
-          <OrbitControls 
-            enablePan={false} 
-            enableZoom={false} 
-            autoRotate 
-            autoRotateSpeed={1.5} // Smooth automatic rotation
-          />
-        </Canvas>
+      <div className="relative w-full h-[450px] lg:h-[600px] z-10 pointer-events-none md:pointer-events-auto md:cursor-grab md:active:cursor-grabbing -mt-12 flex items-center justify-center">
+        {mounted ? (
+          <Canvas camera={{ position: [0, 0, 16], fov: 50 }}>
+            <ambientLight intensity={0.5} />
+            <SkillCloud />
+            <OrbitControls 
+              enablePan={false} 
+              enableZoom={false} 
+              autoRotate 
+              autoRotateSpeed={1.5} // Smooth automatic rotation
+            />
+          </Canvas>
+        ) : (
+          <div className="text-xs font-mono text-[#2b1a05]/50">Loading 3D Arsenal...</div>
+        )}
       </div>
     </section>
   );
 }
+
