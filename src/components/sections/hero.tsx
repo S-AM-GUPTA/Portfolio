@@ -50,9 +50,9 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 lg:pt-28 pb-8 bg-transparent overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 my-auto">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-12 my-auto">
         
-        {/* Left Column: Editorial Headline & Copy */}
+        {/* Right Column: Editorial Headline & Copy */}
         <motion.div 
           className="w-full lg:w-[54%] flex flex-col items-start text-left"
           variants={containerVariants}
@@ -128,12 +128,12 @@ export function Hero() {
 
         </motion.div>
 
-        {/* Right Column: Cinematic Landscape Photo Card */}
+        {/* Left Column / Background: Cinematic Landscape Photo Card */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95, rotate: 1.5 }}
-          animate={{ opacity: 1, scale: 1, rotate: -1.5 }}
+          initial={{ opacity: 0, scale: 0.95, rotate: -1.5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 1.5 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-          className="w-full lg:w-[46%] flex justify-center lg:justify-end relative mt-4 lg:mt-0 perspective-1000"
+          className="w-full lg:w-[46%] flex justify-center lg:justify-start relative mt-4 lg:mt-0 perspective-1000"
         >
           {/* Landscape Card Container */}
           <div 
