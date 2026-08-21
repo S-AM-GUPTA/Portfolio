@@ -25,7 +25,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen lg:h-[100dvh] flex flex-col justify-between pt-24 lg:pt-28 pb-8 bg-[#0a0705] overflow-hidden">
+    <section className="relative min-h-screen lg:h-[100dvh] flex flex-col justify-between pt-28 sm:pt-32 lg:pt-28 pb-8 bg-[#0a0705] overflow-hidden">
       
       {/* DESKTOP BACKGROUND PHOTO (Hidden on mobile) */}
       <div className="hidden lg:block absolute inset-0 z-0 overflow-hidden select-none">
@@ -47,15 +47,15 @@ export function Hero() {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between my-auto gap-8">
         
-        {/* MOBILE PHOTO FIRST (Visible only on mobile/tablet) */}
-        <div className="w-full lg:hidden flex flex-col items-center">
-          <div className="w-full aspect-[4/3] sm:aspect-[16/9] rounded-2xl overflow-hidden border-[2.5px] border-[#2b1a05] bg-[#0a0705] shadow-[6px_6px_0_#2b1a05] relative">
+        {/* MOBILE PHOTO FIRST - Positioned cleanly below navbar (mt-4 sm:mt-6) & focused on face (zero empty blank space) */}
+        <div className="w-full lg:hidden flex flex-col items-center mt-3 sm:mt-6">
+          <div className="w-full aspect-[4/3.2] sm:aspect-[16/9] rounded-2xl overflow-hidden border-[2.5px] border-[#2b1a05] bg-[#0a0705] shadow-[6px_6px_0_#2b1a05] relative">
             <img 
               src="/hero-bg.png" 
               alt="Saksham Gupta" 
-              className="w-full h-full object-cover object-[15%_top]" 
+              className="w-full h-full object-cover object-[0%_15%] scale-110 sm:scale-100 transition-transform" 
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0705]/80 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0705]/60 via-transparent to-transparent pointer-events-none" />
           </div>
         </div>
 
