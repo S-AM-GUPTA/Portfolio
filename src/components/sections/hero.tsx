@@ -26,56 +26,11 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 lg:pt-28 pb-8 bg-transparent overflow-hidden">
-      
-      {/* Profile Background Image Layer */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-        <img 
-          src="/landscape-hero.png" 
-          alt="Saksham Gupta Workstation Background" 
-          className="w-full h-full object-cover object-center lg:object-left filter contrast-110 saturate-95 opacity-25 sm:opacity-30 lg:opacity-35 scale-105"
-        />
-        {/* Parchment Editorial Gradient Overlays for High Contrast & Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#faf7f3]/95 via-[#faf7f3]/85 to-[#faf7f3]/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#faf7f3]/80 via-transparent to-[#faf7f3]" />
-      </div>
-
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 my-auto">
         
-        {/* Decorative Left Side Focus Frame / Badge */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full lg:w-[40%] flex flex-col items-start justify-center hidden lg:flex"
-        >
-          <div className="relative group p-4 rounded-[22px] border-[3px] border-[#2b1a05] bg-[#faf7f3]/80 backdrop-blur-md shadow-[8px_8px_0_#2b1a05] max-w-[380px]">
-            <div className="absolute -top-3 left-6 px-3 py-0.5 bg-[#ffca78] border border-[#2b1a05]/40 rounded-xs rotate-[-2deg] shadow-xs">
-              <span className="text-[9px] font-mono uppercase tracking-wider text-[#2b1a05] font-bold">
-                EST. 2026 • PORTFOLIO
-              </span>
-            </div>
-            
-            <div className="relative aspect-[16/10] rounded-[14px] overflow-hidden border-[2px] border-[#2b1a05] shadow-inner mb-3">
-              <img 
-                src="/landscape-hero.png" 
-                alt="Saksham Gupta Close-up" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="flex items-center justify-between px-1">
-              <div>
-                <span className="font-serif font-bold text-base text-[#2b1a05] block">Saksham Gupta</span>
-                <span className="text-[10px] font-mono text-[#2b1a05]/70 uppercase font-semibold">Full Stack & AI Engineer</span>
-              </div>
-              <span className="font-hand text-base text-[#2b1a05] font-bold rotate-[-3deg]">Crafting code ✦</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Column: Editorial Headline & Copy */}
+        {/* Left Column: Editorial Headline & Copy */}
         <motion.div 
-          className="w-full lg:w-[56%] flex flex-col items-start text-left"
+          className="w-full lg:w-[58%] flex flex-col items-start text-left"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -104,7 +59,7 @@ export function Hero() {
           {/* Subtitle / Intro */}
           <motion.p 
             variants={itemVariants} 
-            className="text-sm sm:text-base md:text-lg text-[#2b1a05]/85 max-w-[540px] mb-6 md:mb-8 leading-relaxed font-normal bg-[#faf7f3]/60 backdrop-blur-xs p-2.5 rounded-xl border border-[#2b1a05]/10"
+            className="text-sm sm:text-base md:text-lg text-[#2b1a05]/80 max-w-[540px] mb-6 md:mb-8 leading-relaxed font-normal"
           >
             Hi, I’m <span className="font-semibold text-[#2b1a05]">Saksham Gupta</span>. I blend strategic system architecture, AI integration, and sleek modern UI engineering to build products that solve real-world problems.
           </motion.p>
@@ -147,6 +102,46 @@ export function Hero() {
             </div>
           </motion.div>
 
+        </motion.div>
+
+        {/* Right Column: Polaroid Tilt Portrait Frame */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, rotate: 2 }}
+          animate={{ opacity: 1, scale: 1, rotate: -2 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          className="w-full lg:w-[42%] flex justify-center lg:justify-end relative mt-4 lg:mt-0"
+        >
+          {/* Polaroid Frame */}
+          <div className="relative group p-3.5 sm:p-4 pb-6 sm:pb-7 rounded-[22px] border-[3px] border-[#2b1a05] bg-[#faf7f3] shadow-[7px_7px_0_#2b1a05] transition-transform duration-500 hover:rotate-0 hover:scale-[1.02] max-w-[280px] sm:max-w-[320px] xl:max-w-[350px]">
+            
+            {/* Washi Tape / Push Pin Sticker */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-[#ffca78] border border-[#2b1a05]/40 rounded-xs rotate-[-2deg] shadow-xs flex items-center justify-center whitespace-nowrap z-20">
+              <span className="text-[9px] font-mono uppercase tracking-wider text-[#2b1a05] font-bold opacity-80 whitespace-nowrap">
+                PORTFOLIO • 2026
+              </span>
+            </div>
+
+            {/* Photo Container */}
+            <div className="relative aspect-[4/4.7] max-h-[46vh] rounded-[14px] overflow-hidden border-[2px] border-[#2b1a05] bg-[#efe9da]">
+              <img 
+                src="/portrait.png" 
+                alt="Saksham Gupta Portrait" 
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+            </div>
+
+            {/* Polaroid Bottom Caption */}
+            <div className="mt-3 flex items-center justify-between px-1">
+              <div className="flex flex-col">
+                <span className="font-serif font-medium text-base text-[#2b1a05]">Saksham Gupta</span>
+                <span className="text-[10px] font-mono text-[#2b1a05]/60 uppercase tracking-wider font-semibold">Product Developer</span>
+              </div>
+              <div className="font-hand text-lg text-[#2b1a05] font-bold rotate-[-4deg]">
+                Say hello! 👋
+              </div>
+            </div>
+
+          </div>
         </motion.div>
 
       </div>
