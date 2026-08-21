@@ -27,20 +27,23 @@ export function Hero() {
   return (
     <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-28 lg:pt-32 pb-14 bg-[#0a0705] overflow-hidden">
       
-      {/* 100% Full-Screen Widescreen Background Photo starting directly below Navbar */}
+      {/* 100% Full-Screen Widescreen Background Photo (Raw Unfiltered High-Res Quality) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
+        {/* Raw Crisp Photo without any filters or opacity degradation */}
         <img 
           src="/hero-bg.png" 
           alt="Saksham Gupta Profile" 
-          className="absolute inset-x-0 top-[80px] lg:top-[88px] w-full h-[calc(100%-80px)] lg:h-[calc(100%-88px)] object-cover object-[20%_center] opacity-95 filter brightness-105 contrast-105"
+          className="absolute inset-x-0 top-[80px] lg:top-[88px] w-full h-[calc(100%-80px)] lg:h-[calc(100%-88px)] object-cover object-[20%_center] opacity-100"
         />
         
-        {/* Full-Screen Dark Overlay for Text Legibility & Contrast */}
-        <div className="absolute inset-0 top-[80px] lg:top-[88px] bg-gradient-to-r from-[#0a0705]/85 via-[#0a0705]/60 to-[#0a0705]/85 lg:from-[#0a0705]/60 lg:via-[#0a0705]/50 lg:to-[#0a0705]/85" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0705] via-transparent via-50% to-[#0a0705]" />
+        {/* Soft Right Vignette behind Text Only (Leaves Face on Left 100% Natural & Crystal Clear) */}
+        <div className="absolute inset-0 top-[80px] lg:top-[88px] bg-gradient-to-r from-transparent via-[#0a0705]/40 via-45% to-[#0a0705]/80 pointer-events-none" />
         
-        {/* Subtle Bottom Fade into Parchment Section */}
-        <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/30 to-transparent pointer-events-none" />
+        {/* Top Fade below Navbar */}
+        <div className="absolute top-[80px] lg:top-[88px] inset-x-0 h-8 bg-gradient-to-b from-[#0a0705] to-transparent pointer-events-none" />
+        
+        {/* Clean Dark Bottom Transition into Next Section (No White Line / No White Fog) */}
+        <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#0a0705] to-transparent pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
