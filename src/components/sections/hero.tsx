@@ -25,53 +25,34 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-28 lg:pt-32 pb-16 bg-[#050505] overflow-hidden">
+    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 lg:pt-28 pb-16 bg-[#060606] overflow-hidden">
       
-      {/* Background Ambient Glow & Bottom Parchment Transition */}
-      <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
-        {/* Dark Radial Ambient Glow */}
-        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#ffca78]/10 blur-[120px] rounded-full" />
-        <div className="absolute right-10 top-1/3 w-80 h-80 bg-[#ffca78]/5 blur-[100px] rounded-full" />
+      {/* Background Workstation Photo (Framed on Left Side) & Expanded Dark Blend */}
+      <div className="absolute inset-0 z-0 overflow-hidden select-none">
+        {/* Left Side Photo Frame */}
+        <div className="absolute left-0 lg:left-8 xl:left-14 top-1/2 -translate-y-1/2 w-full sm:w-[75%] lg:w-[44%] xl:w-[40%] h-[70vh] sm:h-[78vh] flex items-center justify-start pointer-events-none">
+          <img 
+            src="/landscape-hero.png" 
+            alt="Saksham Gupta Workstation" 
+            className="w-full h-full object-contain object-left opacity-95 filter brightness-105 contrast-105"
+          />
+        </div>
+        
+        {/* Smooth Horizontal Gradient Overlay: Eliminates text overlap */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#060606]/70 to-[#060606] lg:from-black/10 lg:via-[#060606]/85 lg:to-[#060606]" />
+        
+        {/* Ambient Radial Accent */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full lg:w-1/2 h-full bg-radial from-[#ffca78]/8 to-transparent pointer-events-none" />
 
-        {/* Bottom Fade Transition into Parchment Body */}
-        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/40 to-transparent" />
+        {/* Bottom Fade Transition into Parchment Section */}
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/40 to-transparent pointer-events-none" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-12 my-auto">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
         
-        {/* Left Column: Scaled & Uncropped Workstation Photo */}
+        {/* Right Column: Editorial Headline & Blended Copy (No Overlap) */}
         <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full lg:w-[45%] xl:w-[46%] flex justify-center lg:justify-start relative"
-        >
-          <div className="relative group w-full max-w-[420px] sm:max-w-[460px] xl:max-w-[500px] rounded-3xl overflow-hidden bg-[#0d0d0d] border-[2px] border-[#ffca78]/25 shadow-[0_12px_40px_rgba(0,0,0,0.8)] transition-all duration-500 hover:border-[#ffca78]/50">
-            
-            {/* Crisp Workstation Image (Proportionately scaled) */}
-            <img 
-              src="/landscape-hero.png" 
-              alt="Saksham Gupta Workstation" 
-              className="w-full h-auto object-cover object-top opacity-95 transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-
-            {/* Seamless Subtle Edge Blend Vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050505]/60" />
-
-            {/* Subtle Photo Overlay Badge */}
-            <div className="absolute bottom-4 left-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#050505]/80 backdrop-blur-md border border-[#ffca78]/30 shadow-md">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#ffca78]">
-                Saksham Gupta • Workstation
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Right Column: Editorial Headline & Copy */}
-        <motion.div 
-          className="w-full lg:w-[52%] xl:w-[50%] flex flex-col items-start text-left lg:pl-4"
+          className="w-full lg:w-[50%] xl:w-[48%] flex flex-col items-start text-left lg:pl-4 mt-4 lg:mt-0"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -149,7 +130,6 @@ export function Hero() {
     </section>
   );
 }
-
 
 
 
