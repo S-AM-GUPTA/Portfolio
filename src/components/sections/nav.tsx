@@ -40,20 +40,35 @@ export function Navigation() {
       )}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="text-xl font-serif font-bold tracking-tight text-[#2b1a05] flex items-center gap-3 relative z-50 group">
+        <a href="#" className="text-xl font-serif font-bold tracking-tight flex items-center gap-3 relative z-50 group">
           <div className="w-10 h-10 rounded-full border-[2px] border-[#2b1a05] bg-[#ffca78] flex items-center justify-center shadow-[2px_2px_0_#2b1a05] overflow-hidden group-hover:rotate-12 transition-transform">
             <img src="/logo.png" alt="Logo" className="w-6 h-6 object-contain filter brightness-0" />
           </div>
-          <span className="font-serif italic font-medium">Saksham Gupta</span>
+          <span className={cn(
+            "font-serif italic font-medium transition-colors duration-200",
+            scrolled ? "text-[#2b1a05]" : "text-[#faf7f3] drop-shadow-sm"
+          )}>
+            Saksham Gupta
+          </span>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-2 bg-[#efe9da]/80 border-[2px] border-[#2b1a05]/20 rounded-full p-1.5 backdrop-blur-sm shadow-[2px_2px_0_rgba(43,26,5,0.08)]">
+        <nav className={cn(
+          "hidden md:flex items-center gap-1.5 rounded-full p-1.5 backdrop-blur-md transition-all duration-300 border-[2px]",
+          scrolled 
+            ? "bg-[#efe9da]/90 border-[#2b1a05]/20 shadow-[2px_2px_0_rgba(43,26,5,0.08)]" 
+            : "bg-[#140d06]/80 border-[#ffca78]/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+        )}>
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-xs font-mono font-medium tracking-wider uppercase text-[#2b1a05] hover:text-[#2b1a05] hover:bg-[#ffca78] transition-all rounded-full px-4 py-2 border border-transparent hover:border-[#2b1a05]/30"
+              className={cn(
+                "text-xs font-mono font-bold tracking-wider uppercase transition-all rounded-full px-4 py-2 border border-transparent",
+                scrolled 
+                  ? "text-[#2b1a05] hover:bg-[#ffca78] hover:border-[#2b1a05]/30" 
+                  : "text-[#faf7f3] hover:text-[#2b1a05] hover:bg-[#ffca78]"
+              )}
             >
               {item.name}
             </a>
@@ -63,10 +78,10 @@ export function Navigation() {
         {/* Get in Touch CTA */}
         <a 
           href="#contact"
-          className="hidden md:inline-flex items-center gap-2 px-6 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#2b1a05] hover:bg-[#ffca78] text-[#ffca78] hover:text-[#2b1a05] border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#2b1a05] hover:shadow-[5px_5px_0_#2b1a05] hover:-translate-y-0.5 transition-all duration-200 relative z-50"
+          className="hidden md:inline-flex items-center gap-2 px-6 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-[#ffca78] hover:bg-[#2b1a05] text-[#2b1a05] hover:text-[#ffca78] border-[2px] border-[#2b1a05] shadow-[3px_3px_0_#2b1a05] hover:shadow-[5px_5px_0_#ffca78] hover:-translate-y-0.5 transition-all duration-200 relative z-50 cursor-pointer"
         >
           <span>Get in Touch</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
         </a>
 
         {/* Mobile Toggle */}
