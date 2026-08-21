@@ -25,27 +25,22 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 lg:pt-28 pb-16 bg-[#060606] overflow-hidden">
+    <section className="relative min-h-[92vh] lg:min-h-screen flex flex-col justify-between pt-24 lg:pt-28 pb-12 bg-[#060606] overflow-hidden">
       
-      {/* Background Workstation Photo (Framed on Left Side) & Expanded Dark Blend */}
+      {/* Background Workstation Photo (Expanding from Left Screen to Text Column) */}
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
-        {/* Left Side Photo Frame */}
-        <div className="absolute left-0 lg:left-8 xl:left-14 top-1/2 -translate-y-1/2 w-full sm:w-[75%] lg:w-[44%] xl:w-[40%] h-[70vh] sm:h-[78vh] flex items-center justify-start pointer-events-none">
-          <img 
-            src="/landscape-hero.png" 
-            alt="Saksham Gupta Workstation" 
-            className="w-full h-full object-contain object-left opacity-95 filter brightness-105 contrast-105"
-          />
-        </div>
+        {/* Workstation Photo filling left to center-right */}
+        <img 
+          src="/landscape-hero.png" 
+          alt="Saksham Gupta Workstation" 
+          className="absolute left-0 top-0 w-full lg:w-[58%] xl:w-[54%] h-full object-cover object-[15%_center] lg:object-left opacity-95 filter brightness-105 contrast-105"
+        />
         
-        {/* Smooth Horizontal Gradient Overlay: Eliminates text overlap */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#060606]/70 to-[#060606] lg:from-black/10 lg:via-[#060606]/85 lg:to-[#060606]" />
+        {/* Seamless Horizontal Fade: Fades the right side of the photo directly into dark background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#060606]/40 via-45% to-[#060606] lg:from-black/10 lg:via-[#060606]/75 lg:via-50% lg:to-[#060606]" />
         
-        {/* Ambient Radial Accent */}
+        {/* Ambient Warm Radial Accent behind Text */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full lg:w-1/2 h-full bg-radial from-[#ffca78]/8 to-transparent pointer-events-none" />
-
-        {/* Bottom Fade Transition into Parchment Section */}
-        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#faf7f3] via-[#faf7f3]/40 to-transparent pointer-events-none" />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-end my-auto">
